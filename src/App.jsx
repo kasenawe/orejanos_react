@@ -1,4 +1,4 @@
-import Navbar from "./components/Navbar";
+import NavbarSite from "./components/NavbarSite";
 import Router from "./components/Router";
 import Footer from "./components/Footer";
 import "./App.css";
@@ -6,7 +6,7 @@ import "./App.css";
 function App() {
   return (
     <div className="app">
-      <Navbar />
+      <NavbarSite />
       <Router />
 
       <Footer />

@@ -7,23 +7,43 @@
   --color-grey-header: #d4d4d4;
 }
 @font-face {
-  font-family: Pinyon;
-  src: url(./assets/fonts/Ailerons-TrialVersion.otf);
+  font-family: Latin-16;
+  src: url(./assets/fonts/latin-16.ttf);
 }
+
 @font-face {
-  font-family: Quicksand;
-  src: url(./assets/fonts/Quicksand.ttf);
+  font-family: Northern;
+  src: url(./assets/fonts/northern-territories.ttf);
 }
+
 @font-face {
-  font-family: Cormorant;
-  src: url(./assets/fonts/cgB.ttf);
+  font-family: Wide-latin;
+  src: url(./assets/fonts/wide-latin.ttf);
+}
+
+@font-face {
+  font-family: Becker;
+  src: url(./assets/fonts/latin-becker.ttf);
 }
 
 * {
   box-sizing: border-box;
 }
 body {
-  background-color: var(--color-black);
+  background-image: url(/img/background_body.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: -1;
 }
 
 *::selection {

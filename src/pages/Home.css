@@ -1,0 +1,13 @@
+.home-container {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.home-title {
+  color: var(--color-white);
+  font-family: Becker;
+}
+
+.home-text {
+  color: var(--color-white);
+}

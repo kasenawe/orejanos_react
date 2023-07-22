@@ -1,4 +1,3 @@
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
@@ -6,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "react-router-dom";
+import ButtonNav from "./ButtonNav";
 import "./NavbarSite.css";
 
 function NavbarSite() {
@@ -45,19 +45,19 @@ function NavbarSite() {
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
                 <Nav.Link href="" className="">
-                  INICIO
+                  <ButtonNav buttonText="INICIO" />
                 </Nav.Link>
                 <Nav.Link href="" className="">
-                  LA DIRECTIVA
+                  <ButtonNav buttonText="LA DIRECTIVA" />
                 </Nav.Link>
                 <Nav.Link href="" className="">
-                  GALERIA
+                  <ButtonNav buttonText="GALERIA" />
                 </Nav.Link>
                 <Nav.Link href="" className="">
-                  SALIDAS
+                  <ButtonNav buttonText="SALIDAS" />
                 </Nav.Link>
                 <Nav.Link href="" className="">
-                  CONTACTO
+                  <ButtonNav buttonText="CONTACTO" />
                 </Nav.Link>
               </Nav>
             </Offcanvas.Body>

@@ -6,8 +6,9 @@ function Home() {
     <>
       <Header />
       <div className="home-container">
-        <h1 className="text-center home-title mt-2">
-          Bienvenidos a la página de OREJANOS BANDA
+        <h1 className="text-center mt-2 ">
+          <span className="home-welcome">Bienvenidos a la página de </span>
+          <span className="home-title">OREJANOS BANDA</span>
         </h1>
         <h3 className="text-center home-text mt-5">
           Grupo de ciclismo recreativo en Montevideo

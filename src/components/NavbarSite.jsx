@@ -33,7 +33,7 @@ function NavbarSite() {
             <Offcanvas.Header
               closeButton
               data-bs-theme="dark"
-              className="pt-2 pb-0 px-4 "
+              className="pt-2 pb-0 px-4"
             >
               <Offcanvas.Title
                 id={`offcanvasNavbarLabel-expand-lg`}
@@ -44,19 +44,19 @@ function NavbarSite() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link href="#action1" className="">
+                <Nav.Link href="" className="">
                   INICIO
                 </Nav.Link>
-                <Nav.Link href="#action2" className="">
+                <Nav.Link href="" className="">
                   LA DIRECTIVA
                 </Nav.Link>
-                <Nav.Link href="#action2" className="">
+                <Nav.Link href="" className="">
                   GALERIA
                 </Nav.Link>
-                <Nav.Link href="#action2" className="">
+                <Nav.Link href="" className="">
                   SALIDAS
                 </Nav.Link>
-                <Nav.Link href="#action2" className="">
+                <Nav.Link href="" className="">
                   CONTACTO
                 </Nav.Link>
               </Nav>

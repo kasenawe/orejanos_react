@@ -11,13 +11,13 @@ import "./NavbarSite.css";
 function NavbarSite() {
   return (
     <>
-      <Navbar expand="lg" className="navbar-orejanos mb-3 navbar-dark ">
+      <Navbar expand="lg" className="navbar-orejanos navbar-dark ">
         <Container fluid>
           <Navbar.Brand>
             <Link to="/">
               <img
                 className="navbar-logo"
-                src="/img/Orejanos_green_black.svg"
+                src="/img/Orejanos_green_black.png"
                 alt=""
               />
             </Link>
@@ -28,28 +28,36 @@ function NavbarSite() {
             id={`offcanvasNavbar-expand-lg`}
             aria-labelledby={`offcanvasNavbarLabel-expand-lg`}
             placement="end"
+            className="offcanvas-orejanos"
           >
-            <Offcanvas.Header closeButton>
-              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-lg`}>
-                Offcanvas
+            <Offcanvas.Header
+              closeButton
+              data-bs-theme="dark"
+              className="pt-2 pb-0 px-4 "
+            >
+              <Offcanvas.Title
+                id={`offcanvasNavbarLabel-expand-lg`}
+                className="mt-3"
+              >
+                OREJANOS
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link href="#action1" className="text-white">
-                  Inicio
+                <Nav.Link href="#action1" className="">
+                  INICIO
                 </Nav.Link>
-                <Nav.Link href="#action2" className="text-white">
-                  La Directiva
+                <Nav.Link href="#action2" className="">
+                  LA DIRECTIVA
                 </Nav.Link>
-                <Nav.Link href="#action2" className="text-white">
-                  Galeria
+                <Nav.Link href="#action2" className="">
+                  GALERIA
                 </Nav.Link>
-                <Nav.Link href="#action2" className="text-white">
-                  Salidas
+                <Nav.Link href="#action2" className="">
+                  SALIDAS
                 </Nav.Link>
-                <Nav.Link href="#action2" className="text-white">
-                  Contacto
+                <Nav.Link href="#action2" className="">
+                  CONTACTO
                 </Nav.Link>
               </Nav>
             </Offcanvas.Body>

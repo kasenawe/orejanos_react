@@ -22,8 +22,8 @@
 }
 
 @font-face {
-  font-family: Becker;
-  src: url(./assets/fonts/latin-becker.ttf);
+  font-family: Latin Becker;
+  src: url(./assets/fonts/latin-becker.ttf) format("truetype");
 }
 
 * {
@@ -56,6 +56,16 @@ body::before {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+}
+
+.content-after-nav {
+  margin-top: 152px; /* Ajusta el valor a la altura de tu Navbar */
+}
+
+@media (max-width: 992px) {
+  .content-after-nav {
+    margin-top: 86px; /* Ajusta el valor a la altura de tu Navbar */
+  }
 }
 
 .btn-kairos {

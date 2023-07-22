@@ -5,9 +5,15 @@
 
 .home-title {
   color: var(--color-white);
-  font-family: Becker;
+  font-family: Latin Becker;
 }
 
 .home-text {
   color: var(--color-white);
+}
+
+.separator {
+  height: 3px; /* Altura de la línea separadora */
+  background-color: var(--color-white); /* Color de la línea separadora */
+  transform: translateY(-1px); /* Corrección para que quede centrada */
 }

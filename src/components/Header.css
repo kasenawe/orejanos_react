@@ -1,0 +1,11 @@
+.headerContainer {
+  height: 0;
+  position: relative;
+  padding-bottom: 34.25%; /* Relación de aspecto 16:9 (9 dividido por 16 multiplicado por 100) */
+}
+
+@media (max-width: 992px) {
+  .headerContainer {
+    padding-bottom: 70.25%; /* Relación de aspecto 16:9 (9 dividido por 16 multiplicado por 100) */
+  }
+}

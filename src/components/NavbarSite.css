@@ -17,6 +17,10 @@
   }
 }
 
+.navbar-dark .navbar-toggler-icon {
+  background-image: url(../assets/list_hamburger_icon.svg);
+}
+
 .navbar-orejanos .nav-dropdown .dropdown-toggle {
   color: var(--color-white);
 }

@@ -48,3 +48,8 @@
 .button-nav:hover:before {
   transform: translateX(15em);
 }
+
+.onCanvas {
+  text-align: start;
+  width: 100%;
+}

@@ -11,7 +11,7 @@ import "./NavbarSite.css";
 function NavbarSite() {
   return (
     <>
-      <Navbar expand="lg" className="navbar-orejanos navbar-dark ">
+      <Navbar expand="xl" className="navbar-orejanos navbar-dark ">
         <Container fluid>
           <Navbar.Brand>
             <Link to="/">
@@ -45,19 +45,19 @@ function NavbarSite() {
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
                 <Nav.Link href="" className="">
-                  <ButtonNav buttonText="INICIO" />
+                  <ButtonNav buttonText="INICIO" onCanvas="onCanvas" />
                 </Nav.Link>
                 <Nav.Link href="" className="">
-                  <ButtonNav buttonText="LA DIRECTIVA" />
+                  <ButtonNav buttonText="ORGANIZADORES" onCanvas="onCanvas" />
                 </Nav.Link>
                 <Nav.Link href="" className="">
-                  <ButtonNav buttonText="GALERIA" />
+                  <ButtonNav buttonText="GALERIA" onCanvas="onCanvas" />
                 </Nav.Link>
                 <Nav.Link href="" className="">
-                  <ButtonNav buttonText="SALIDAS" />
+                  <ButtonNav buttonText="SALIDAS" onCanvas="onCanvas" />
                 </Nav.Link>
                 <Nav.Link href="" className="">
-                  <ButtonNav buttonText="CONTACTO" />
+                  <ButtonNav buttonText="CONTACTO" onCanvas="onCanvas" />
                 </Nav.Link>
               </Nav>
             </Offcanvas.Body>

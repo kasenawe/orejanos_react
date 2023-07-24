@@ -9,6 +9,7 @@
 .navbar-logo {
   height: auto;
   width: 150px;
+  touch-action: manipulation;
 }
 
 @media (max-width: 992px) {

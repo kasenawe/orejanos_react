@@ -6,9 +6,21 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "react-router-dom";
 import ButtonNav from "./ButtonNav";
+import React from "react";
+import { useState } from "react";
 import "./NavbarSite.css";
 
 function NavbarSite() {
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
+
+  const handleCloseOffcanvas = () => {
+    setShowOffcanvas(false);
+  };
+
+  const handleShowOffcanvas = () => {
+    setShowOffcanvas(true);
+  };
+
   return (
     <>
       <Navbar expand="xl" className="navbar-orejanos navbar-dark ">
@@ -22,9 +34,14 @@ function NavbarSite() {
               />
             </Link>
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="offcanvasNavbar-expand-md" />
+          <Navbar.Toggle
+            aria-controls="offcanvasNavbar-expand-md"
+            onClick={handleShowOffcanvas}
+          />
 
           <Navbar.Offcanvas
+            show={showOffcanvas}
+            onHide={handleCloseOffcanvas}
             id={`offcanvasNavbar-expand-lg`}
             aria-labelledby={`offcanvasNavbarLabel-expand-lg`}
             placement="end"
@@ -34,6 +51,7 @@ function NavbarSite() {
               closeButton
               data-bs-theme="dark"
               className="pt-2 pb-0 px-4"
+              onClick={handleCloseOffcanvas}
             >
               <Offcanvas.Title
                 id={`offcanvasNavbarLabel-expand-lg`}
@@ -44,16 +62,20 @@ function NavbarSite() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Link to="/coordinadores" className="nav-link">
+                <Link
+                  to="/coordinadores"
+                  className="nav-link"
+                  onClick={handleCloseOffcanvas}
+                >
                   <ButtonNav buttonText="COORDINADORES" onCanvas="onCanvas" />
                 </Link>
-                <Link to="" className="nav-link">
+                <Link to="" className="nav-link" onClick={handleCloseOffcanvas}>
                   <ButtonNav buttonText="GALERIA" onCanvas="onCanvas" />
                 </Link>
-                <Link to="" className="nav-link">
+                <Link to="" className="nav-link" onClick={handleCloseOffcanvas}>
                   <ButtonNav buttonText="SALIDAS" onCanvas="onCanvas" />
                 </Link>
-                <Link to="" className="nav-link">
+                <Link to="" className="nav-link" onClick={handleCloseOffcanvas}>
                   <ButtonNav buttonText="CONTACTO" onCanvas="onCanvas" />
                 </Link>
               </Nav>

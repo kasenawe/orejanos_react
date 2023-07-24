@@ -1,6 +1,11 @@
 .coor-container {
   width: 70%;
   margin: 0 auto;
+  margin-top: 4%;
+}
+
+.coord-text {
+  color: var(--color-white);
 }
 
 .separator {

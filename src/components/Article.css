@@ -1,0 +1,10 @@
+.articles-text {
+  color: var(--color-white);
+}
+
+.articles-img {
+  border: 1px solid var(--color-gray);
+  width: 100%;
+  max-height: 197.78px;
+  object-fit: cover;
+}

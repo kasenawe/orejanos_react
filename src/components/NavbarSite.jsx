@@ -44,21 +44,18 @@ function NavbarSite() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link href="" className="">
-                  <ButtonNav buttonText="INICIO" onCanvas="onCanvas" />
-                </Nav.Link>
-                <Nav.Link href="" className="">
-                  <ButtonNav buttonText="ORGANIZADORES" onCanvas="onCanvas" />
-                </Nav.Link>
-                <Nav.Link href="" className="">
+                <Link to="/coordinadores" className="nav-link">
+                  <ButtonNav buttonText="COORDINADORES" onCanvas="onCanvas" />
+                </Link>
+                <Link to="" className="nav-link">
                   <ButtonNav buttonText="GALERIA" onCanvas="onCanvas" />
-                </Nav.Link>
-                <Nav.Link href="" className="">
+                </Link>
+                <Link to="" className="nav-link">
                   <ButtonNav buttonText="SALIDAS" onCanvas="onCanvas" />
-                </Nav.Link>
-                <Nav.Link href="" className="">
+                </Link>
+                <Link to="" className="nav-link">
                   <ButtonNav buttonText="CONTACTO" onCanvas="onCanvas" />
-                </Nav.Link>
+                </Link>
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

@@ -17,17 +17,18 @@
   }
 }
 
+.navbar-logo:hover {
+  color: #82ffc9;
+  box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.6),
+    0 0 9px 3px rgb(27, 253, 155);
+}
+
 .navbar-dark .navbar-toggler-icon {
   background-image: url(../assets/list_hamburger_icon.svg);
 }
 
 .navbar-orejanos .nav-dropdown .dropdown-toggle {
   color: var(--color-white);
-}
-
-.nav-link {
-  color: var(--color-white);
-  font-size: 1.5rem;
 }
 
 .offcanvas-orejanos {

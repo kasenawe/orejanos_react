@@ -10,12 +10,17 @@ function Coordinators() {
           <CoordinatorsCard
             cardName={"Maximiliano"}
             cardJob={"Suplente"}
-            imgRoute={"/img/Maximiliano.jpg"}
+            imgRoute={"/img/Maximiliano.jpeg"}
             imgAlt={"Maximiliano"}
           />
           <CoordinatorsCard cardName={"Nicolas"} cardJob={"Titular"} />
           <CoordinatorsCard cardName={"Christian"} cardJob={"Titular"} />
-          <CoordinatorsCard cardName={"Santiago"} cardJob={"Suplente"} />
+          <CoordinatorsCard
+            cardName={"Santiago"}
+            cardJob={"Suplente"}
+            imgRoute={"/img/Santiago.jpg"}
+            imgAlt={"Santiago"}
+          />
           <div className="separator" />
         </div>
       </div>

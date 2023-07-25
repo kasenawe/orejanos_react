@@ -1,0 +1,9 @@
+.gallery-container {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 2%;
+}
+
+.gallery-text {
+  color: var(--color-white);
+}

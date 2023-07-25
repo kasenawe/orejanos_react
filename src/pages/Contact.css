@@ -1,0 +1,9 @@
+.contact-container {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 2%;
+}
+
+.contact-text {
+  color: var(--color-white);
+}

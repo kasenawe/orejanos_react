@@ -8,20 +8,22 @@ function Coordinators() {
         <h1 className="text-center mb-5 coord-text">COORDINADORES</h1>
         <div className="row">
           <CoordinatorsCard
-            cardName={"Maximiliano"}
+            cardName={"Nicolas Gutierrez"}
+            cardJob={"Titular"}
+          />
+          <CoordinatorsCard cardName={"Christian Garcia"} cardJob={"Titular"} />
+          <CoordinatorsCard
+            cardName={"Maximiliano Quintana"}
             cardJob={"Suplente"}
             imgRoute={"/img/Maximiliano.jpeg"}
             imgAlt={"Maximiliano"}
           />
-          <CoordinatorsCard cardName={"Nicolas"} cardJob={"Titular"} />
-          <CoordinatorsCard cardName={"Christian"} cardJob={"Titular"} />
           <CoordinatorsCard
-            cardName={"Santiago"}
+            cardName={"Santiago Da Silva"}
             cardJob={"Suplente"}
             imgRoute={"/img/Santiago.jpg"}
             imgAlt={"Santiago"}
           />
-          <div className="separator" />
         </div>
       </div>
     </>

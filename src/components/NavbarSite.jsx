@@ -69,13 +69,25 @@ function NavbarSite() {
                 >
                   <ButtonNav buttonText="COORDINADORES" onCanvas="onCanvas" />
                 </Link>
-                <Link to="" className="nav-link" onClick={handleCloseOffcanvas}>
+                <Link
+                  to="/galeria"
+                  className="nav-link"
+                  onClick={handleCloseOffcanvas}
+                >
                   <ButtonNav buttonText="GALERIA" onCanvas="onCanvas" />
                 </Link>
-                <Link to="" className="nav-link" onClick={handleCloseOffcanvas}>
+                <Link
+                  to="/salidas"
+                  className="nav-link"
+                  onClick={handleCloseOffcanvas}
+                >
                   <ButtonNav buttonText="SALIDAS" onCanvas="onCanvas" />
                 </Link>
-                <Link to="" className="nav-link" onClick={handleCloseOffcanvas}>
+                <Link
+                  to="/contacto"
+                  className="nav-link"
+                  onClick={handleCloseOffcanvas}
+                >
                   <ButtonNav buttonText="CONTACTO" onCanvas="onCanvas" />
                 </Link>
               </Nav>

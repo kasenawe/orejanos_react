@@ -37,6 +37,7 @@
   box-sizing: border-box;
 }
 body {
+  background-color: var(--color-black);
   background-image: url(/img/background_body.png);
   background-size: cover;
   background-repeat: no-repeat;

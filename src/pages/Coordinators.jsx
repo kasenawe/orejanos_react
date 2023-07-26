@@ -15,7 +15,7 @@ function Coordinators() {
           <CoordinatorsCard
             cardName={"Maximiliano Quintana"}
             cardJob={"Suplente"}
-            imgRoute={"/img/Maximiliano.jpeg"}
+            imgRoute={"/img/Maximiliano.png"}
             imgAlt={"Maximiliano"}
           />
           <CoordinatorsCard

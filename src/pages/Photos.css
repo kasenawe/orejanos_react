@@ -7,3 +7,8 @@
 .gallery-text {
   color: var(--color-white);
 }
+
+.thumbnail-img {
+  height: 30%;
+  width: 30%;
+}

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import React from "react";
+import PhotoModal from "./PhotoModal";
 
 import "./Photos.css";
 
@@ -21,7 +23,27 @@ function Photos() {
       images: [
         {
           src: "/img/header4.jpg",
-          alt: "Maximiliano",
+          alt: "Header4",
+        },
+        {
+          src: "/img/Santiago.jpg",
+          alt: "Santiago",
+        },
+        {
+          src: "/img/Maximiliano.jpg",
+          alt: "Santiago",
+        },
+        // Agrega más imágenes para este álbum
+      ],
+    },
+    // Puedes agregar más álbumes aquí
+    {
+      name: "Álbum 3",
+      coverImage: "/img/header4.jpg",
+      images: [
+        {
+          src: "/img/header4.jpg",
+          alt: "Header4",
         },
         {
           src: "/img/Santiago.jpg",
@@ -30,30 +52,73 @@ function Photos() {
         // Agrega más imágenes para este álbum
       ],
     },
-    // Puedes agregar más álbumes aquí
+    {
+      name: "Álbum 4",
+      coverImage: "/img/header4.jpg",
+      images: [
+        {
+          src: "/img/header4.jpg",
+          alt: "Header4",
+        },
+        {
+          src: "/img/Santiago.jpg",
+          alt: "Santiago",
+        },
+        // Agrega más imágenes para este álbum
+      ],
+    },
+    {
+      name: "Álbum 5",
+      coverImage: "/img/header4.jpg",
+      images: [
+        {
+          src: "/img/header4.jpg",
+          alt: "Header4",
+        },
+        {
+          src: "/img/Santiago.jpg",
+          alt: "Santiago",
+        },
+        // Agrega más imágenes para este álbum
+      ],
+    },
   ];
 
   const [selectedAlbum, setSelectedAlbum] = useState(null);
+  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
+  const [selectedPhotoAlt, setSelectedPhotoAlt] = useState(null);
+  const [selectedPhotoUrl, setSelectedPhotoUrl] = useState(null);
+
+  const [show, setShow] = useState(null);
 
   const handleAlbumClick = (albumIndex) => {
     setSelectedAlbum(albumIndex);
   };
+  const handlePhotoClick = (photoIndex) => {
+    setSelectedPhotoIndex(photoIndex);
+    setSelectedPhotoAlt(albums[selectedAlbum].images[photoIndex].alt);
+    setSelectedPhotoUrl(albums[selectedAlbum].images[photoIndex].src);
+    setShow(true);
+  };
 
   return (
     <>
-      <div className="gallery-container">
-        <h1 className="text-center mb-5 gallery-text">Galería de fotos</h1>
+      <h1 className="text-center mt-5 mb-5 gallery-text">Galería de fotos</h1>
+      <div className="gallery-container mb-5">
         {selectedAlbum === null ? (
           <div className="gallery-grid">
             {albums.map((album, index) => (
-              <div key={index} className="album-thumbnail">
+              <div
+                key={index}
+                className="album-thumbnail-container my-4"
+                onClick={() => handleAlbumClick(index)}
+              >
                 <img
                   src={album.coverImage}
                   alt={album.name}
-                  onClick={() => handleAlbumClick(index)}
-                  className="thumbnail-img"
+                  className="album-thumbnail-img"
                 />
-                <div className="album-caption">{album.name}</div>
+                <h4 className="album-text">{album.name}</h4>
               </div>
             ))}
           </div>
@@ -61,24 +126,39 @@ function Photos() {
           // Mostrar las fotos del álbum seleccionado
           <>
             <button
-              className="back-button"
+              className="button-gallery"
               onClick={() => setSelectedAlbum(null)}
             >
-              Volver a la galería
+              VOLVER
             </button>
-            <h2>{albums[selectedAlbum].name}</h2>
+            <h2 className="gallery-text mt-4">{albums[selectedAlbum].name}</h2>
 
-            <div className="gallery-grid">
+            <div className="photo-grid">
               {albums[selectedAlbum].images.map((img, index) => (
-                <div key={index} className="img-thumbnail">
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    onClick={() => handleAlbumClick(index)}
-                    className="thumbnail-img"
+                <React.Fragment key={index}>
+                  <div
+                    className="photo-thumbnail-container"
+                    onClick={() => setShow(true)}
+                  >
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      onClick={() => handlePhotoClick(index)}
+                      className="photo-thumbnail-img"
+                    />
+                    <div className="img-caption">{img.alt}</div>
+                  </div>
+                  <PhotoModal
+                    key={`modal-${selectedAlbum}-${index}`}
+                    show={show}
+                    setShow={setShow}
+                    alt={selectedPhotoAlt}
+                    url={selectedPhotoUrl}
+                    images={albums[selectedAlbum].images} // Pasar todas las imágenes del álbum a PhotoModal
+                    selectedPhotoIndex={selectedPhotoIndex}
+                    setSelectedPhotoIndex={setSelectedPhotoIndex}
                   />
-                  <div className="img-caption">{img.alt}</div>
-                </div>
+                </React.Fragment>
               ))}
             </div>
           </>

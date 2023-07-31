@@ -75,7 +75,11 @@ function PhotoModal({
           >
             {images.map((img, index) => (
               <Carousel.Item key={index}>
-                <img src={img.src} alt={img.alt} className="carousel-image" />
+                <img
+                  src={`/img/${img.src}`}
+                  alt={img.alt}
+                  className="carousel-image"
+                />
                 <Carousel.Caption className="img-caption">
                   {img.alt}
                 </Carousel.Caption>

@@ -1,88 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import PhotoModal from "./PhotoModal";
+import axios from "axios";
 
 import "./Photos.css";
 
 function Photos() {
-  const albums = [
-    {
-      name: "Álbum 1",
-      coverImage: "/img/header1.jpg",
-      images: [
-        {
-          src: "/img/header1.jpg",
-          alt: "header1",
-        },
-        // Agrega más imágenes para este álbum
-      ],
-    },
-    {
-      name: "Álbum 2",
-      coverImage: "/img/header4.jpg",
-      images: [
-        {
-          src: "/img/header4.jpg",
-          alt: "Header4",
-        },
-        {
-          src: "/img/Santiago.jpg",
-          alt: "Santiago",
-        },
-        {
-          src: "/img/Maximiliano.jpg",
-          alt: "Santiago",
-        },
-        // Agrega más imágenes para este álbum
-      ],
-    },
-    // Puedes agregar más álbumes aquí
-    {
-      name: "Álbum 3",
-      coverImage: "/img/header4.jpg",
-      images: [
-        {
-          src: "/img/header4.jpg",
-          alt: "Header4",
-        },
-        {
-          src: "/img/Santiago.jpg",
-          alt: "Santiago",
-        },
-        // Agrega más imágenes para este álbum
-      ],
-    },
-    {
-      name: "Álbum 4",
-      coverImage: "/img/header4.jpg",
-      images: [
-        {
-          src: "/img/header4.jpg",
-          alt: "Header4",
-        },
-        {
-          src: "/img/Santiago.jpg",
-          alt: "Santiago",
-        },
-        // Agrega más imágenes para este álbum
-      ],
-    },
-    {
-      name: "Álbum 5",
-      coverImage: "/img/header4.jpg",
-      images: [
-        {
-          src: "/img/header4.jpg",
-          alt: "Header4",
-        },
-        {
-          src: "/img/Santiago.jpg",
-          alt: "Santiago",
-        },
-        // Agrega más imágenes para este álbum
-      ],
-    },
-  ];
+  const [albums, setAlbums] = useState([]);
+
+  useEffect(() => {
+    const getAlbums = async () => {
+      const response = await axios({
+        method: "GET",
+        url: `${import.meta.env.VITE_API_DOMAIN}/albums`,
+      });
+      setAlbums(response.data);
+    };
+    getAlbums();
+  }, []);
 
   const [selectedAlbum, setSelectedAlbum] = useState(null);
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
@@ -114,7 +49,7 @@ function Photos() {
                 onClick={() => handleAlbumClick(index)}
               >
                 <img
-                  src={album.coverImage}
+                  src={`/img/${album.coverImage}`}
                   alt={album.name}
                   className="album-thumbnail-img"
                 />
@@ -141,7 +76,7 @@ function Photos() {
                     onClick={() => setShow(true)}
                   >
                     <img
-                      src={img.src}
+                      src={`/img/${img.src}`}
                       alt={img.alt}
                       onClick={() => handlePhotoClick(index)}
                       className="photo-thumbnail-img"

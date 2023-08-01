@@ -1,35 +1,40 @@
 import Article from "./Article";
+import { useState, useEffect } from "react";
+import React from "react";
+import axios from "axios";
+
 import "./HomeArticles.css";
 
 function HomeArticles() {
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    const getArticles = async () => {
+      const response = await axios({
+        method: "GET",
+        url: `${import.meta.env.VITE_API_DOMAIN}/articles`,
+      });
+      setArticles(response.data);
+    };
+    getArticles();
+  }, []);
+
   return (
     <div>
       <div className="row">
-        <h3 className="mb-4 articles-title">Ultimos articulos</h3>
-        <Article
-          articleTitle={"Lunes de cuestas!"}
-          imgRoute={"/img/article3.jpg"}
-          imgAlt={"article3"}
-          articleText={
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis doloremque animi omnis ratione, officiis ad illum, eaque temporibus nesciunt nulla magni assumenda dolorum odio alias."
-          }
-        />
-        <Article
-          articleTitle={"Jueves de fuerza!"}
-          imgRoute={"/img/article2.jpg"}
-          imgAlt={"article2"}
-          articleText={
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis doloremque animi omnis ratione, officiis ad illum, eaque temporibus nesciunt nulla magni assumenda dolorum odio alias."
-          }
-        />
-        <Article
-          articleTitle={"Nueva Jersey!"}
-          imgRoute={"/img/article1.jpg"}
-          imgAlt={"article1"}
-          articleText={
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis doloremque animi omnis ratione, officiis ad illum, eaque temporibus nesciunt nulla magni assumenda dolorum odio alias."
-          }
-        />
+        <h3 className="mb-4 articles-title">Ultimas noticias</h3>
+
+        {articles &&
+          articles
+            .slice(0, 6)
+            .map((article) => (
+              <Article
+                key={article.id}
+                name={article.name}
+                image={`/img/${article.image}`}
+                content={article.content}
+              />
+            ))}
       </div>
     </div>
   );

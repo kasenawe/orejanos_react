@@ -6,8 +6,6 @@ import Carousel from "react-bootstrap/Carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {
-  faChevronLeft,
-  faChevronRight,
   faArrowAltCircleLeft,
   faArrowAltCircleRight,
   faTimes,
@@ -16,8 +14,6 @@ import {
 function PhotoModal({
   show,
   setShow,
-  alt,
-  url,
   images,
   selectedPhotoIndex,
   setSelectedPhotoIndex,

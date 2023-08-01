@@ -70,11 +70,11 @@ function NavbarSite() {
                   <ButtonNav buttonText="COORDINADORES" onCanvas="onCanvas" />
                 </Link>
                 <Link
-                  to="/fotos"
+                  to="/galeria"
                   className="nav-link"
                   onClick={handleCloseOffcanvas}
                 >
-                  <ButtonNav buttonText="FOTOS" onCanvas="onCanvas" />
+                  <ButtonNav buttonText="GALERIA" onCanvas="onCanvas" />
                 </Link>
                 <Link
                   to="/salidas"

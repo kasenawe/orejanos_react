@@ -4,14 +4,21 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ButtonNav from "./ButtonNav";
 import React from "react";
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { removeToken } from "../redux/adminSlice";
+
 import "./NavbarSite.css";
 
 function NavbarSite() {
   const [showOffcanvas, setShowOffcanvas] = useState(false);
+  const admin = useSelector((state) => state.admin);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleCloseOffcanvas = () => {
     setShowOffcanvas(false);
@@ -19,6 +26,12 @@ function NavbarSite() {
 
   const handleShowOffcanvas = () => {
     setShowOffcanvas(true);
+  };
+
+  const handleLogout = () => {
+    dispatch(removeToken());
+    handleCloseOffcanvas();
+    navigate("/");
   };
 
   return (
@@ -97,13 +110,19 @@ function NavbarSite() {
                 >
                   <ButtonNav buttonText="CONTACTO" onCanvas="onCanvas" />
                 </Link>
-                <Link
-                  to="/login"
-                  className="nav-link"
-                  onClick={handleCloseOffcanvas}
-                >
-                  <ButtonNav buttonText="LOGIN" onCanvas="onCanvas" />
-                </Link>
+                {!admin ? (
+                  <Link
+                    to="/login"
+                    className="nav-link"
+                    onClick={handleCloseOffcanvas}
+                  >
+                    <ButtonNav buttonText="LOGIN" onCanvas="onCanvas" />
+                  </Link>
+                ) : (
+                  <Link to="/" className="nav-link" onClick={handleLogout}>
+                    <ButtonNav buttonText="LOGOUT" onCanvas="onCanvas" />
+                  </Link>
+                )}
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

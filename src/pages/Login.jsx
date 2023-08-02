@@ -9,7 +9,6 @@ import axios from "axios";
 import "./Login.css";
 
 function Login() {
-  const admin = useSelector((state) => state.admin);
   const [usernameValue, setUsernameValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [error, setError] = useState("");

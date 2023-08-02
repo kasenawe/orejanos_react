@@ -36,7 +36,9 @@ function Album() {
         <button className="button-gallery">VOLVER</button>
       </Link>
 
-      {album && <h2 className="gallery-text mt-4">{album.name}</h2>}
+      {album && (
+        <h2 className="text-center gallery-text mt-4 mb-5">{album.name}</h2>
+      )}
 
       <div className="photo-grid">
         {album.images &&

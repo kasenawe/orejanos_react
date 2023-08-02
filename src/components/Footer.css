@@ -17,7 +17,6 @@
   text-decoration: none;
   background-color: transparent;
   border: transparent;
-  font-family: Quicksand;
   letter-spacing: 2px;
   font-weight: 400;
   font-size: 0.7rem;
@@ -36,7 +35,6 @@
 .footer-title {
   pointer-events: none;
   letter-spacing: 3px;
-  font-family: Quicksand;
   color: var(--color-gray);
   text-align: left;
   font-size: 1rem;

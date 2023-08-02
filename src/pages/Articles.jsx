@@ -1,11 +1,11 @@
-import Article from "./Article";
 import { useState, useEffect } from "react";
+import Article from "../components/Article";
 import React from "react";
 import axios from "axios";
 
-import "./HomeArticles.css";
+import "./Articles.css";
 
-function HomeArticles() {
+function Articles() {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
@@ -20,24 +20,21 @@ function HomeArticles() {
   }, []);
 
   return (
-    <div>
+    <div className="album-container">
+      <h1 className="text-center mt-5 mb-5 gallery-text">Articulos</h1>
       <div className="row">
-        <h3 className="mb-4 articles-title">Ultimas noticias</h3>
-
         {articles &&
-          articles
-            .slice(0, 3)
-            .map((article) => (
-              <Article
-                key={article.id}
-                name={article.name}
-                image={`/img/${article.image}`}
-                content={article.content}
-              />
-            ))}
+          articles.map((article) => (
+            <Article
+              key={article.id}
+              name={article.name}
+              image={`/img/${article.image}`}
+              content={article.content}
+            />
+          ))}
       </div>
     </div>
   );
 }
 
-export default HomeArticles;
+export default Articles;

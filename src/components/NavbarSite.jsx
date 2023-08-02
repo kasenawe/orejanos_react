@@ -22,8 +22,8 @@ function NavbarSite() {
   };
 
   return (
-    <>
-      <Navbar expand="xl" className="navbar-orejanos navbar-dark ">
+    <div className="nav-container">
+      <Navbar expand="xxl" className="navbar-orejanos navbar-dark ">
         <Container fluid>
           <Navbar.Brand>
             <Link to="/">
@@ -77,11 +77,18 @@ function NavbarSite() {
                   <ButtonNav buttonText="GALERIA" onCanvas="onCanvas" />
                 </Link>
                 <Link
-                  to="/salidas"
+                  to="/articulos"
                   className="nav-link"
                   onClick={handleCloseOffcanvas}
                 >
-                  <ButtonNav buttonText="SALIDAS" onCanvas="onCanvas" />
+                  <ButtonNav buttonText="ARTICULOS" onCanvas="onCanvas" />
+                </Link>
+                <Link
+                  to="/horarios"
+                  className="nav-link"
+                  onClick={handleCloseOffcanvas}
+                >
+                  <ButtonNav buttonText="HORARIOS" onCanvas="onCanvas" />
                 </Link>
                 <Link
                   to="/contacto"
@@ -90,12 +97,19 @@ function NavbarSite() {
                 >
                   <ButtonNav buttonText="CONTACTO" onCanvas="onCanvas" />
                 </Link>
+                <Link
+                  to="/login"
+                  className="nav-link"
+                  onClick={handleCloseOffcanvas}
+                >
+                  <ButtonNav buttonText="LOGIN" onCanvas="onCanvas" />
+                </Link>
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
-    </>
+    </div>
   );
 }
 

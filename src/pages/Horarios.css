@@ -1,9 +1,9 @@
-.salidas-container {
+.horarios-container {
   width: 70%;
   margin: 0 auto;
   margin-top: 2%;
 }
 
-.salidas-text {
+.horarios-text {
   color: var(--color-white);
 }

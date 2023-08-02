@@ -12,7 +12,7 @@ function HomeArticles() {
     const getArticles = async () => {
       const response = await axios({
         method: "GET",
-        url: `${import.meta.env.VITE_API_DOMAIN}/articles`,
+        url: "https://orejanos-back.vercel.app/articles",
       });
       setArticles(response.data);
     };

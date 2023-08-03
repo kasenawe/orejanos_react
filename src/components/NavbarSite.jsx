@@ -90,11 +90,11 @@ function NavbarSite() {
                   <ButtonNav buttonText="GALERIA" onCanvas="onCanvas" />
                 </Link>
                 <Link
-                  to="/articulos"
+                  to="/publicaciones"
                   className="nav-link"
                   onClick={handleCloseOffcanvas}
                 >
-                  <ButtonNav buttonText="ARTICULOS" onCanvas="onCanvas" />
+                  <ButtonNav buttonText="PUBLICACIONES" onCanvas="onCanvas" />
                 </Link>
                 <Link
                   to="/horarios"

@@ -17,7 +17,7 @@ function Router() {
       <Route path="/coordinadores" element={<Coordinators />} />
       <Route path="/galeria" element={<Gallery />} />
       <Route path="/album/:name" element={<Album />} />
-      <Route path="/articulos" element={<Articles />} />
+      <Route path="/publicaciones" element={<Articles />} />
       <Route path="/horarios" element={<Horarios />} />
       <Route path="/contacto" element={<Contact />} />
       <Route path="/login" element={<Login />} />

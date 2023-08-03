@@ -52,6 +52,7 @@
   background-color: var(--color-green-separator);
   display: flex;
   justify-content: center;
+  align-items: center;
   max-width: 100%;
   margin: 0;
 }
@@ -65,6 +66,12 @@
 .partner-logo {
   height: auto;
   width: 200px;
+}
+
+@media (max-width: 991px) {
+  .partner-logo {
+    margin-bottom: 1.3rem;
+  }
 }
 
 .footer-fat {

@@ -3,3 +3,9 @@
   margin: 0 auto;
   margin-top: 2%;
 }
+
+.icon-delete-photo {
+  margin: 2rem;
+  height: auto;
+  width: 30px;
+}

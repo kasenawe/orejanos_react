@@ -68,6 +68,13 @@
   opacity: 0;
   transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
 }
+
+.appear-from-left {
+  /* Estilos finales para la animación */
+  transform: translateX(0);
+  opacity: 1;
+}
+
 .partner-logo {
   height: auto;
   width: 200px;
@@ -78,11 +85,6 @@
 }
 
 .appear-from-right {
-  /* Estilos finales para la animación */
-  transform: translateX(0);
-  opacity: 1;
-}
-.appear-from-left {
   /* Estilos finales para la animación */
   transform: translateX(0);
   opacity: 1;

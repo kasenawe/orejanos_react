@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 
 import "./Gallery.css";
 
 function Gallery() {
   const [albums, setAlbums] = useState([]);
+  const admin = useSelector((state) => state.admin);
 
   useEffect(() => {
     const getAlbums = async () => {
@@ -25,16 +27,23 @@ function Gallery() {
       <div className="gallery-container mb-5">
         <div className="gallery-grid">
           {albums.map((album) => (
-            <Link to={`/album/${album.slug}`} key={album.id}>
-              <div className="album-thumbnail-container my-4">
-                <img
-                  src={`/img/${album.coverImage}`}
-                  alt={album.name}
-                  className="album-thumbnail-img"
-                />
-                <h4 className="album-text">{album.name}</h4>
-              </div>
-            </Link>
+            <div className={admin ? "border rounded m-2" : ""} key={album.id}>
+              <Link to={`/album/${album.slug}`} key={album.id}>
+                <div className="album-thumbnail-container my-4">
+                  <img
+                    src={`/img/${album.coverImage}`}
+                    alt={album.name}
+                    className="album-thumbnail-img"
+                  />
+                  <h4 className="album-text">{album.name}</h4>
+                </div>
+              </Link>
+              {admin && (
+                <div className="d-flex justify-content-center">
+                  <button className="btn-delete mb-1">Delete album</button>
+                </div>
+              )}
+            </div>
           ))}
         </div>
       </div>

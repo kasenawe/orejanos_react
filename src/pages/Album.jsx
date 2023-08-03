@@ -56,6 +56,7 @@ function Album() {
                 />
                 <div className="img-caption">{img.alt}</div>
               </div>
+
               <PhotoModal
                 key={`modal-${index}`}
                 show={show}

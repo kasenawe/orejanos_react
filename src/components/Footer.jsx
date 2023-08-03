@@ -50,7 +50,7 @@ function Footer() {
           <img
             ref={partnerRef}
             src="/img/logo_kom.svg"
-            alt="OrejanosLogo"
+            alt="logo kom"
             className="partner-logo"
           />
         </Col>

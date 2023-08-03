@@ -23,6 +23,9 @@
   .navbar-logo {
     width: 66px;
   }
+  .navbar-orejanos {
+    width: 100vw;
+  }
 }
 
 .navbar-logo:hover {

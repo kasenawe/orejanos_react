@@ -74,6 +74,7 @@ body::before {
 @media (max-width: 992px) {
   .content-after-nav {
     margin-top: 86px; /* Ajusta el valor a la altura de tu Navbar */
+    margin-bottom: 50px;
   }
 }
 

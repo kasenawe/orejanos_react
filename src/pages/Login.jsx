@@ -44,8 +44,10 @@ function Login() {
   return (
     <div className="login-container mt-5">
       <div className="login-form">
-        {error && <p className="text-center text-danger">{error}</p>}
-        <h3 className="text-center login-text mb-4">Login</h3>
+        {error && <p className="text-center login-alert">{error}</p>}
+        <p className="text-center login-title">Login </p>
+        <p className="text-center login-title mb-4">Administradores</p>
+
         <form className="form" onSubmit={handleSubmit} autoComplete="off">
           <div className="input-group">
             <label htmlFor="username" className="login-text">

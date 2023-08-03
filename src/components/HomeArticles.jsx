@@ -22,7 +22,7 @@ function HomeArticles() {
   return (
     <div>
       <div className="row">
-        <h3 className="mb-4 articles-title">Ultimas noticias</h3>
+        <h3 className="mb-4 articles-title">Ultimas publicaciones:</h3>
 
         {articles &&
           articles

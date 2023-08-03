@@ -120,7 +120,11 @@ function NavbarSite() {
                   </Link>
                 ) : (
                   <Link to="/" className="nav-link" onClick={handleLogout}>
-                    <ButtonNav buttonText="LOGOUT" onCanvas="onCanvas" />
+                    <ButtonNav
+                      buttonText="LOGOUT"
+                      onCanvas="onCanvas"
+                      onLogout="logout-color"
+                    />
                   </Link>
                 )}
               </Nav>

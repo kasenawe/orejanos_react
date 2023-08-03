@@ -11,18 +11,22 @@ function HomeIntro() {
         Grupo de ciclismo recreativo en Montevideo
       </h3>
 
-      <h5 className="home-text mt-5">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-        similique deleniti soluta asperiores. Numquam sequi, provident ad earum
-        magni beatae ducimus. Quidem magnam distinctio odit earum voluptatem
-        optio ipsa in nisi ipsum, sequi animi est a at rem perspiciatis
-        veritatis qui ea ad, voluptas quis non obcaecati blanditiis asperiores
-        nihil! Corrupti, sequi ratione, laborum earum asperiores autem quam vel
-        illum, tempore aperiam fugit fuga! Perspiciatis autem saepe, recusandae
-        modi corrupti, dicta eligendi ea repudiandae, iure omnis quo. Dicta
-        cumque non molestiae fuga quia quae nulla possimus. Quisquam sit
-        assumenda esse.
-      </h5>
+      <p className="home-text mt-4">
+        Somos una comunidad entusiasta de ciclismo recreativo nos reunimos para
+        disfrutar de salidas en forma no competitiva. Promovemos el deporte y el
+        compañerismo por lo tanto nuestras salidas son abiertas a ciclistas
+        principiantes tanto como experimentados, asegurando que todos los
+        participantes puedan disfrutar la experiencia según sus habilidades
+      </p>
+      <p className="home-text">
+        La seguridad es una prioridad fomentamos el uso de protección
+        establecido y el respeto por las reglas de transito durante el recorrido
+      </p>
+      <p className="home-text">
+        Fomentamos un espíritu de comunidad donde todos los participantes puedan
+        compartir sus experiencias y motivarse mutuamente para cumplir sus
+        objetivos
+      </p>
     </>
   );
 }

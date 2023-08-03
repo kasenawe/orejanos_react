@@ -7,7 +7,7 @@
 }
 
 .login-form {
-  height: 440px;
+  height: auto;
   width: 350px;
   background-color: var(--color-black);
   justify-content: center;
@@ -15,6 +15,16 @@
   margin-bottom: 2rem;
   border: 2px var(--color-green-separator) solid;
   border-radius: 4%;
+}
+
+.login-title {
+  color: var(--color-white);
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+
+.login-alert {
+  color: var(--color-red-alert);
 }
 
 .login-text {

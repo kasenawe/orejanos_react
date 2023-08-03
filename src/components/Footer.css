@@ -48,6 +48,25 @@
   height: 100%;
 }
 
+.footer-partner {
+  background-color: var(--color-green-separator);
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  margin: 0;
+}
+
+.text-partner {
+  color: var(--color-gray-dark);
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin: 0;
+}
+.partner-logo {
+  height: auto;
+  width: 200px;
+}
+
 .footer-fat {
   display: flex;
   justify-content: center;

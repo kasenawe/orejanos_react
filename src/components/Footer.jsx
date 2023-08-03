@@ -5,6 +5,18 @@ import { Col, Container, Row } from "react-bootstrap";
 function Footer() {
   return (
     <footer id="footer">
+      <Row className="footer-partner">
+        <Col xs={12} md={12} lg={4} className="col-footer">
+          <p className="text-partner py-4">Patrocinador de Orejanos</p>
+        </Col>
+        <Col xs={12} md={12} lg={4} className="col-footer">
+          <img
+            src="/img/logo_kom.svg"
+            alt="OrejanosLogo"
+            className="partner-logo py-4"
+          />
+        </Col>
+      </Row>
       <Row className="footer-fat">
         <Col xs={12} md={12} lg={4} className="col-footer">
           <img

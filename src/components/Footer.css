@@ -13,6 +13,7 @@
   margin-top: auto;
   position: sticky;
 }
+
 .footer-text {
   text-decoration: none;
   background-color: transparent;
@@ -62,10 +63,29 @@
   font-size: 1.7rem;
   font-weight: 600;
   margin: 0;
+  /* Estilos iniciales para la animación */
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
 }
 .partner-logo {
   height: auto;
   width: 200px;
+  /* Estilos iniciales para la animación */
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+}
+
+.appear-from-right {
+  /* Estilos finales para la animación */
+  transform: translateX(0);
+  opacity: 1;
+}
+.appear-from-left {
+  /* Estilos finales para la animación */
+  transform: translateX(0);
+  opacity: 1;
 }
 
 @media (max-width: 991px) {

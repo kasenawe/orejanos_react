@@ -72,7 +72,7 @@ function Login() {
               placeholder="password"
               onChange={(event) => setPasswordValue(event.target.value)}
             />
-            <Link to="/reset-password" className="forgot login-text mt-1">
+            <Link to="/reset-password" className="forgot login-text">
               Olvido su contraseña?
             </Link>
           </div>

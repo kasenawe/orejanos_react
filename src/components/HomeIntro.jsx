@@ -4,14 +4,17 @@ function HomeIntro() {
   return (
     <>
       <h1 className="text-center mt-2 ">
-        <span className="home-welcome">Bienvenidos a la página de </span>
+        <span className="home-welcome">Bienvenidos a la página de: </span>
         <span className="home-title">OREJANOS BANDA</span>
       </h1>
-      <h3 className="text-center home-text mt-5">
+      <h2 className="home-text text-center mt-4">
         Grupo de ciclismo recreativo en Montevideo
+      </h2>
+      <h3 className="text-center home-text mt-4">
+        "Salimos juntos y llegamos todos separados"
       </h3>
 
-      <p className="home-text mt-4">
+      <p className="home-text mt-5">
         Somos una comunidad entusiasta de ciclismo recreativo nos reunimos para
         disfrutar de salidas en forma no competitiva. Promovemos el deporte y el
         compañerismo por lo tanto nuestras salidas son abiertas a ciclistas

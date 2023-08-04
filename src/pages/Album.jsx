@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import { useParams, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import PhotoModal from "./PhotoModal";
 import axios from "axios";
 
@@ -9,6 +10,7 @@ import "./Album.css";
 function Album() {
   const params = useParams();
   const [album, setAlbum] = useState({});
+  const admin = useSelector((state) => state.admin);
 
   useEffect(() => {
     const getAlbum = async () => {
@@ -32,9 +34,16 @@ function Album() {
 
   return (
     <div className="album-container">
-      <Link to={`/galeria`} key={album.id}>
-        <button className="button-gallery">VOLVER</button>
-      </Link>
+      <div className="button-container">
+        <Link to={`/galeria`} key={album.id}>
+          <button className="button-gallery">VOLVER</button>
+        </Link>
+        {admin && (
+          <Link to="" key={album.id}>
+            <button className="btn-delete-2">ELIMINAR</button>
+          </Link>
+        )}
+      </div>
 
       {album && (
         <h2 className="text-center gallery-text mt-4 mb-5">{album.name}</h2>

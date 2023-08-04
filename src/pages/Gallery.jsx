@@ -26,10 +26,25 @@ function Gallery() {
       <h1 className="text-center mt-5 mb-5 gallery-text">Galería de fotos</h1>
       <div className="gallery-container mb-5">
         <div className="gallery-grid">
+          {admin && (
+            <div className="add-container">
+              <div className="album-effect-line album-effect-line2" />
+              <div className="album-effect-line" />
+
+              <div className="album-thumbnail-container">
+                <p className="plus-icon">+</p>
+                <h4 className="album-text">Crear album</h4>
+              </div>
+            </div>
+          )}
+
           {albums.map((album) => (
-            <div className={admin ? "border rounded m-2" : ""} key={album.id}>
-              <Link to={`/album/${album.slug}`} key={album.id}>
-                <div className="album-thumbnail-container my-4">
+            <div className={admin ? "" : ""} key={album.id}>
+              <Link to={`/album/${album.slug}`}>
+                <div className="album-effect-line album-effect-line2" />
+                <div className="album-effect-line" />
+
+                <div className="album-thumbnail-container">
                   <img
                     src={`/img/${album.coverImage}`}
                     alt={album.name}
@@ -40,7 +55,7 @@ function Gallery() {
               </Link>
               {admin && (
                 <div className="d-flex justify-content-center">
-                  <button className="btn-delete mb-1">Delete album</button>
+                  <button className="btn-delete mb-1">Eliminar album</button>
                 </div>
               )}
             </div>

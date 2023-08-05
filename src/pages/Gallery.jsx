@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 
+import CreateAlbumModal from "../components/CreateAlbumModal";
 import "./Gallery.css";
 
 function Gallery() {
-  const [albums, setAlbums] = useState([]);
   const admin = useSelector((state) => state.admin);
+  const [albums, setAlbums] = useState([]);
+  const [show, setShow] = useState(null);
 
   useEffect(() => {
     const getAlbums = async () => {
@@ -21,13 +23,17 @@ function Gallery() {
     getAlbums();
   }, []);
 
+  const handleCreateClick = () => {
+    setShow(true);
+  };
+
   return (
     <>
       <h1 className="text-center mt-5 mb-5 gallery-text">Galería de fotos</h1>
       <div className="gallery-container mb-5">
         <div className="gallery-grid">
           {admin && (
-            <div className="add-container">
+            <div className="add-container" onClick={handleCreateClick}>
               <div className="album-effect-line album-effect-line2" />
               <div className="album-effect-line" />
 
@@ -62,6 +68,7 @@ function Gallery() {
           ))}
         </div>
       </div>
+      <CreateAlbumModal show={show} setShow={setShow} />
     </>
   );
 }

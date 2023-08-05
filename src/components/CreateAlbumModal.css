@@ -1,0 +1,15 @@
+.create-modal-body {
+  height: 300px !important;
+
+  display: flex;
+  justify-content: center;
+}
+
+.create-modal-content {
+  background-color: var(--color-gray-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}

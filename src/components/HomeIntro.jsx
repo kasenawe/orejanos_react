@@ -15,15 +15,22 @@ function HomeIntro() {
       </h3>
 
       <p className="home-text mt-5">
-        Somos una comunidad entusiasta de ciclismo recreativo nos reunimos para
-        disfrutar de salidas en forma no competitiva. Promovemos el deporte y el
-        compañerismo por lo tanto nuestras salidas son abiertas a ciclistas
-        principiantes tanto como experimentados, asegurando que todos los
-        participantes puedan disfrutar la experiencia según sus habilidades
+        Somos un grupo de aficionados al ciclismo, abierto a todo el que quiera
+        participar. Nos reunimos para disfrutar de salidas recreativas a las que
+        te puedes sumar con tu bicicleta de ruta, MTB o gravel. Promovemos el
+        deporte y la generación de un clima agradable en el grupo como pilares
+        para la salud y el relacionamiento entre los Orejanos. Nuestros valores
+        priorizan el compañerismo y solidaridad entre los miembros del grupo,
+        por lo que nuestras salidas son abiertas a ciclistas con diversos grados
+        de experiencia y entrenamiento, desde principiantes a experimentados.
+        Nos esforzamos en asegurar que todos puedan disfrutar nuestras salidas,
+        independientemente de su experiencia.
       </p>
       <p className="home-text">
-        La seguridad es una prioridad fomentamos el uso de protección
-        establecido y el respeto por las reglas de transito durante el recorrido
+        La seguridad también es nuestra prioridad. El uso de los elementos de
+        seguridad (casco y luces), el buen estado general de la bicicleta y de
+        sus frenos, así como el total respeto por las reglas de tránsito son
+        obligatorios en nuestras salidas.
       </p>
       <p className="home-text">
         Fomentamos un espíritu de comunidad donde todos los participantes puedan

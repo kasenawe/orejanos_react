@@ -1,50 +1,67 @@
 import "./CreateAlbumModal.css";
 import Modal from "react-bootstrap/Modal";
+import { Form, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import axios from "axios";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 function CreateAlbumModal({ show, setShow }) {
   const admin = useSelector((state) => state.admin);
-  const [albums, setAlbums] = useState([]);
-  const [newAlbumName, setNewAlbumName] = useState(""); // Nuevo estado
 
-  const createAlbum = async () => {
-    if (newAlbumName.trim() === "") {
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [nameValue, setName] = useState(""); // Nuevo estado
+  const [imagesValue, setImages] = useState([]);
+
+  const [coverImageValue, setCoverImage] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const createAlbum = async (event) => {
+    event.preventDefault();
+
+    if (nameValue.trim() === "") {
       alert("Por favor, ingresa un nombre para el álbum.");
       return;
     }
 
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_DOMAIN}/albums`,
-        {
-          name: newAlbumName,
-          // Otros campos relevantes para la creación del álbum
-        }
-      );
+      const formData = new FormData();
 
-      setAlbums([...albums, response.data]);
-      setNewAlbumName(""); // Limpiar el campo de entrada después de la creación exitosa
+      formData.append("name", nameValue);
+      for (let i = 0; i < imagesValue.length; i++) {
+        formData.append("images", imagesValue[i]);
+      }
+
+      await axios({
+        method: "POST",
+        url: `${import.meta.env.VITE_API_DOMAIN}/admin/album`,
+        data: formData,
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: "Bearer " + admin.token,
+        },
+      });
+
+      handleClose();
     } catch (error) {
       console.error("Error al crear el álbum:", error);
-      // Manejar el error de creación del álbum aquí
+      setErrorMessage(
+        "Error al crear el álbum. Por favor, inténtalo nuevamente."
+      );
     }
-  };
-
-  const handleNewAlbumNameChange = (event) => {
-    setNewAlbumName(event.target.value);
   };
 
   return (
     <>
       <Modal
-        size="lg"
+        size="md"
         show={show}
         onHide={() => setShow(false)}
         aria-labelledby="example-modal-sizes-title-lg"
+        centered
       >
         <Modal.Body className="create-modal-body">
           <div className="close-button" onClick={() => setShow(false)}>
@@ -53,17 +70,49 @@ function CreateAlbumModal({ show, setShow }) {
             </div>
           </div>
           <div className="create-modal-content">
-            <h3 className="text-center">Crear album</h3>{" "}
-            <input
-              type="text"
-              placeholder="Nombre del álbum"
-              value={newAlbumName}
-              onChange={handleNewAlbumNameChange}
-              className="album-name-input"
-            />
-            <button className="btn-create" onClick={createAlbum}>
-              Crear álbum
-            </button>
+            <h3 className="create-modal-text text-center">Crear album</h3>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            <Form onSubmit={createAlbum}>
+              <Form.Label htmlFor="name" className="create-modal-input-group">
+                Nombre
+              </Form.Label>
+              <Form.Control
+                type="text"
+                id="name"
+                placeholder="Nombre del álbum"
+                value={nameValue}
+                onChange={(event) => setName(event.target.value)}
+                className="create-modal-input-group"
+              />
+
+              <Form.Label htmlFor="images" className="create-modal-input-group">
+                Imagenes
+              </Form.Label>
+              <Form.Control
+                type="file"
+                id="images"
+                multiple // Allow multiple file selection
+                className="create-modal-input-group"
+                onChange={(event) => setImages(event.target.files)}
+              />
+              <div className="d-flex gap-4">
+                <Button
+                  variant="secondary"
+                  onClick={handleClose}
+                  className="create-modal-btn"
+                >
+                  Close
+                </Button>
+
+                <Button
+                  type="submit"
+                  variant="primary"
+                  className="create-modal-btn"
+                >
+                  Save Changes
+                </Button>
+              </div>
+            </Form>
           </div>
         </Modal.Body>
       </Modal>

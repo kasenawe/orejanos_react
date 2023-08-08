@@ -36,6 +36,7 @@ function PhotoModal({
         show={show}
         onHide={() => setShow(false)}
         aria-labelledby="example-modal-sizes-title-lg"
+        centered
       >
         <Modal.Body className="modal-body">
           <div className="close-button" onClick={() => setShow(false)}>

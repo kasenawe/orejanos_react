@@ -21,6 +21,7 @@ function CreateAlbumModal({ show, setShow, render, setRender }) {
 
   const [coverImageValue, setCoverImage] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const createAlbum = async (event) => {
     event.preventDefault();
@@ -54,6 +55,8 @@ function CreateAlbumModal({ show, setShow, render, setRender }) {
       setErrorMessage(
         "Error al crear el álbum. Por favor, inténtalo nuevamente."
       );
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -85,6 +88,98 @@ function CreateAlbumModal({ show, setShow, render, setRender }) {
             <h3 className="create-modal-text text-center">Crear album</h3>
             {errorMessage && (
               <p className="create-modal-error-message">{errorMessage}</p>
+            )}
+            {isLoading && (
+              <div>
+                <svg
+                  className="loader"
+                  viewBox="0 0 48 30"
+                  width="48px"
+                  height="30px"
+                >
+                  <g
+                    fill="none"
+                    stroke="#1bfd9c"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1"
+                  >
+                    <g transform="translate(9.5,19)">
+                      <circle
+                        className="loader_tire"
+                        r="9"
+                        stroke-dasharray="56.549 56.549"
+                      ></circle>
+                      <g
+                        className="loader_spokes-spin"
+                        stroke-dasharray="31.416 31.416"
+                        stroke-dashoffset="-23.562"
+                      >
+                        <circle class="loader_spokes" r="5"></circle>
+                        <circle
+                          className="loader_spokes"
+                          r="5"
+                          transform="rotate(180,0,0)"
+                        ></circle>
+                      </g>
+                    </g>
+                    <g transform="translate(24,19)">
+                      <g
+                        className="loader_pedals-spin"
+                        stroke-dasharray="25.133 25.133"
+                        stroke-dashoffset="-21.991"
+                        transform="rotate(67.5,0,0)"
+                      >
+                        <circle class="loader_pedals" r="4"></circle>
+                        <circle
+                          className="loader_pedals"
+                          r="4"
+                          transform="rotate(180,0,0)"
+                        ></circle>
+                      </g>
+                    </g>
+                    <g transform="translate(38.5,19)">
+                      <circle
+                        className="loader_tire"
+                        r="9"
+                        stroke-dasharray="56.549 56.549"
+                      ></circle>
+                      <g
+                        className="loader_spokes-spin"
+                        stroke-dasharray="31.416 31.416"
+                        stroke-dashoffset="-23.562"
+                      >
+                        <circle class="loader_spokes" r="5"></circle>
+                        <circle
+                          className="loader_spokes"
+                          r="5"
+                          transform="rotate(180,0,0)"
+                        ></circle>
+                      </g>
+                    </g>
+                    <polyline
+                      className="loader_seat"
+                      points="14 3,18 3"
+                      stroke-dasharray="5 5"
+                    ></polyline>
+                    <polyline
+                      className="loader_body"
+                      points="16 3,24 19,9.5 19,18 8,34 7,24 19"
+                      stroke-dasharray="79 79"
+                    ></polyline>
+                    <path
+                      className="loader_handlebars"
+                      d="m30,2h6s1,0,1,1-1,1-1,1"
+                      stroke-dasharray="10 10"
+                    ></path>
+                    <polyline
+                      className="loader_front"
+                      points="32.5 2,38.5 19"
+                      stroke-dasharray="19 19"
+                    ></polyline>
+                  </g>
+                </svg>
+              </div>
             )}
             <Form onSubmit={createAlbum}>
               <Form.Label htmlFor="name" className="create-modal-input-group">
@@ -123,6 +218,7 @@ function CreateAlbumModal({ show, setShow, render, setRender }) {
                   type="submit"
                   variant="primary"
                   className="create-modal-btn"
+                  onClick={() => setIsLoading(true)}
                 >
                   Crear
                 </Button>

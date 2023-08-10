@@ -10,7 +10,10 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 function CreateAlbumModal({ show, setShow, render, setRender }) {
   const admin = useSelector((state) => state.admin);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setErrorMessage("");
+  };
   const handleShow = () => setShow(true);
 
   const [nameValue, setName] = useState(""); // Nuevo estado
@@ -59,19 +62,30 @@ function CreateAlbumModal({ show, setShow, render, setRender }) {
       <Modal
         size="md"
         show={show}
-        onHide={() => setShow(false)}
+        onHide={() => {
+          setShow(false);
+          setErrorMessage("");
+        }}
         aria-labelledby="example-modal-sizes-title-lg"
         centered
       >
         <Modal.Body className="create-modal-body">
-          <div className="close-button" onClick={() => setShow(false)}>
+          <div
+            className="close-button"
+            onClick={() => {
+              setShow(false);
+              setErrorMessage("");
+            }}
+          >
             <div className="close-circle-black">
               <FontAwesomeIcon icon={faTimes} className="close-icon" />
             </div>
           </div>
           <div className="create-modal-content">
             <h3 className="create-modal-text text-center">Crear album</h3>
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            {errorMessage && (
+              <p className="create-modal-error-message">{errorMessage}</p>
+            )}
             <Form onSubmit={createAlbum}>
               <Form.Label htmlFor="name" className="create-modal-input-group">
                 Nombre
@@ -94,6 +108,7 @@ function CreateAlbumModal({ show, setShow, render, setRender }) {
                 multiple // Allow multiple file selection
                 className="create-modal-input-group"
                 onChange={(event) => setImages(event.target.files)}
+                required
               />
               <div className="d-flex gap-4">
                 <Button

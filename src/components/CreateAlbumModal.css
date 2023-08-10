@@ -78,3 +78,7 @@
 .create-modal-btn:hover:before {
   transform: translateX(15em);
 }
+
+.create-modal-error-message {
+  color: var(--color-red-alert);
+}

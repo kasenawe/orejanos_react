@@ -59,7 +59,7 @@ function Album() {
           <button className="button-gallery">VOLVER</button>
         </Link>
         {admin && album && (
-          <Link to="">
+          <Link to="/galeria">
             <button className="btn-delete-2" onClick={() => handleDelete()}>
               ELIMINAR
             </button>

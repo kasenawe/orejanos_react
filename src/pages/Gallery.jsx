@@ -31,19 +31,6 @@ function Gallery() {
 
   const handleDelete = async (album) => {
     try {
-      const imageFilename = album.coverImage;
-
-      // Eliminar la imagen de Supabase
-      await axios({
-        method: "DELETE",
-        url: `${
-          import.meta.env.VITE_API_DOMAIN
-        }/admin/album/delete-image/${imageFilename}`,
-        headers: {
-          Authorization: "Bearer " + admin.token,
-        },
-      });
-
       await axios({
         method: "DELETE",
         url: `${import.meta.env.VITE_API_DOMAIN}/admin/album/${album.id}`,

@@ -11,6 +11,8 @@ function Album() {
   const params = useParams();
   const [album, setAlbum] = useState({});
   const admin = useSelector((state) => state.admin);
+  const [render, setRender] = useState(0);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     const getAlbum = async () => {
@@ -21,7 +23,7 @@ function Album() {
       setAlbum(response.data.album);
     };
     getAlbum();
-  }, []);
+  }, [render]);
 
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
   const [show, setShow] = useState(null);
@@ -31,15 +33,36 @@ function Album() {
     setShow(true);
   };
 
+  const handleDelete = async () => {
+    try {
+      await axios({
+        method: "DELETE",
+        url: `${import.meta.env.VITE_API_DOMAIN}/admin/album/${album.id}`,
+
+        headers: {
+          Authorization: "Bearer " + admin.token,
+        },
+      });
+      setRender(render + 1);
+    } catch (error) {
+      console.error("Error al eliminar el álbum:", error);
+      setErrorMessage(
+        "Error al eliminar el álbum. Por favor, inténtalo nuevamente."
+      );
+    }
+  };
+
   return (
     <div className="album-container">
       <div className="button-container">
-        <Link to={`/galeria`} key={album.id}>
+        <Link to="/galeria">
           <button className="button-gallery">VOLVER</button>
         </Link>
-        {admin && (
+        {admin && album && (
           <Link to="">
-            <button className="btn-delete-2">ELIMINAR</button>
+            <button className="btn-delete-2" onClick={() => handleDelete()}>
+              ELIMINAR
+            </button>
           </Link>
         )}
       </div>
@@ -49,7 +72,8 @@ function Album() {
       )}
 
       <div className="photo-grid">
-        {album.images &&
+        {album &&
+          album.images &&
           album.images.map((img, index) => (
             <React.Fragment key={index}>
               <div

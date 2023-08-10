@@ -101,7 +101,7 @@ function CreateAlbumModal({ show, setShow, render, setRender }) {
                   onClick={handleClose}
                   className="create-modal-btn"
                 >
-                  Close
+                  Cerrar
                 </Button>
 
                 <Button
@@ -109,7 +109,7 @@ function CreateAlbumModal({ show, setShow, render, setRender }) {
                   variant="primary"
                   className="create-modal-btn"
                 >
-                  Save Changes
+                  Crear
                 </Button>
               </div>
             </Form>

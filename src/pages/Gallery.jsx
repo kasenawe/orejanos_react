@@ -11,6 +11,8 @@ function Gallery() {
   const admin = useSelector((state) => state.admin);
   const [albums, setAlbums] = useState([]);
   const [show, setShow] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [render, setRender] = useState(0);
 
   useEffect(() => {
     const getAlbums = async () => {
@@ -21,10 +23,42 @@ function Gallery() {
       setAlbums(response.data);
     };
     getAlbums();
-  }, []);
+  }, [render]);
 
   const handleCreateClick = () => {
     setShow(true);
+  };
+
+  const handleDelete = async (album) => {
+    try {
+      const imageFilename = album.coverImage;
+
+      // Eliminar la imagen de Supabase
+      await axios({
+        method: "DELETE",
+        url: `${
+          import.meta.env.VITE_API_DOMAIN
+        }/admin/album/delete-image/${imageFilename}`,
+        headers: {
+          Authorization: "Bearer " + admin.token,
+        },
+      });
+
+      await axios({
+        method: "DELETE",
+        url: `${import.meta.env.VITE_API_DOMAIN}/admin/album/${album.id}`,
+
+        headers: {
+          Authorization: "Bearer " + admin.token,
+        },
+      });
+      setRender(render + 1);
+    } catch (error) {
+      console.error("Error al eliminar el álbum:", error);
+      setErrorMessage(
+        "Error al eliminar el álbum. Por favor, inténtalo nuevamente."
+      );
+    }
   };
 
   return (
@@ -52,7 +86,9 @@ function Gallery() {
 
                 <div className="album-thumbnail-container">
                   <img
-                    src={`/img/${album.coverImage}`}
+                    src={`${import.meta.env.VITE_SUPABASE_IMG_URL}${
+                      album.coverImage
+                    }`}
                     alt={album.name}
                     className="album-thumbnail-img"
                   />
@@ -61,14 +97,24 @@ function Gallery() {
               </Link>
               {admin && (
                 <div className="d-flex justify-content-center">
-                  <button className="btn-delete mb-1">Eliminar album</button>
+                  <button
+                    className="btn-delete mb-1"
+                    onClick={() => handleDelete(album)}
+                  >
+                    Eliminar album
+                  </button>
                 </div>
               )}
             </div>
           ))}
         </div>
       </div>
-      <CreateAlbumModal show={show} setShow={setShow} />
+      <CreateAlbumModal
+        show={show}
+        setShow={setShow}
+        render={render}
+        setRender={setRender}
+      />
     </>
   );
 }

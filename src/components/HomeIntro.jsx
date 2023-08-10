@@ -11,7 +11,7 @@ function HomeIntro() {
         Grupo de ciclismo recreativo en Montevideo
       </h2>
       <h3 className="text-center home-text mt-4">
-        "Salimos juntos y llegamos todos separados"
+        "Salimos juntos y llegamos todos juntos"
       </h3>
 
       <p className="home-text mt-5">

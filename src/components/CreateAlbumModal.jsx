@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-function CreateAlbumModal({ show, setShow }) {
+function CreateAlbumModal({ show, setShow, render, setRender }) {
   const admin = useSelector((state) => state.admin);
 
   const handleClose = () => setShow(false);
@@ -44,7 +44,7 @@ function CreateAlbumModal({ show, setShow }) {
           Authorization: "Bearer " + admin.token,
         },
       });
-
+      setRender(render + 1);
       handleClose();
     } catch (error) {
       console.error("Error al crear el álbum:", error);

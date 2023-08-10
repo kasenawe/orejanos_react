@@ -14,7 +14,6 @@ function Album() {
 
   useEffect(() => {
     const getAlbum = async () => {
-      console.log(params);
       const response = await axios({
         method: "GET",
         url: `${import.meta.env.VITE_API_DOMAIN}/album/${params.name}`,
@@ -39,7 +38,7 @@ function Album() {
           <button className="button-gallery">VOLVER</button>
         </Link>
         {admin && (
-          <Link to="" key={album.id}>
+          <Link to="">
             <button className="btn-delete-2">ELIMINAR</button>
           </Link>
         )}
@@ -58,7 +57,7 @@ function Album() {
                 onClick={() => setShow(true)}
               >
                 <img
-                  src={`/img/${img.src}`}
+                  src={`${import.meta.env.VITE_SUPABASE_IMG_URL}${img.src}`}
                   alt={img.alt}
                   onClick={() => handlePhotoClick(index)}
                   className="photo-thumbnail-img"

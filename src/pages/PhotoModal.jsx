@@ -73,7 +73,7 @@ function PhotoModal({
             {images.map((img, index) => (
               <Carousel.Item key={index}>
                 <img
-                  src={`/img/${img.src}`}
+                  src={`${import.meta.env.VITE_SUPABASE_IMG_URL}${img.src}`}
                   alt={img.alt}
                   className="carousel-image"
                 />

@@ -31,25 +31,6 @@ function Gallery() {
 
   const reversedAlbums = [...albums].reverse();
 
-  const handleDelete = async (album) => {
-    try {
-      await axios({
-        method: "DELETE",
-        url: `${import.meta.env.VITE_API_DOMAIN}/admin/album/${album.id}`,
-
-        headers: {
-          Authorization: "Bearer " + admin.token,
-        },
-      });
-      setRender(render + 1);
-    } catch (error) {
-      console.error("Error al eliminar el álbum:", error);
-      setErrorMessage(
-        "Error al eliminar el álbum. Por favor, inténtalo nuevamente."
-      );
-    }
-  };
-
   return (
     <>
       <h1 className="text-center mt-5 mb-5 gallery-text">Galería de fotos</h1>
@@ -84,16 +65,6 @@ function Gallery() {
                   <h4 className="gallery-album-text">{album.name}</h4>
                 </div>
               </Link>
-              {admin && (
-                <div className="d-flex justify-content-center">
-                  <button
-                    className="gallery-btn-delete mb-1"
-                    onClick={() => handleDelete(album)}
-                  >
-                    Eliminar album
-                  </button>
-                </div>
-              )}
             </div>
           ))}
         </div>

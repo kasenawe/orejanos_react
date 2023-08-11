@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import PhotoModal from "./PhotoModal";
 import axios from "axios";
@@ -14,6 +14,8 @@ function Album() {
   const [render, setRender] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getAlbum = async () => {
@@ -53,6 +55,7 @@ function Album() {
       );
     } finally {
       setIsLoading(false);
+      navigate("/galeria");
     }
   };
 
@@ -63,7 +66,7 @@ function Album() {
           <button className="album-button">VOLVER</button>
         </Link>
         {admin && album && (
-          <Link to="/galeria">
+          <Link>
             <button
               className="album-btn-delete-2"
               onClick={() => handleDelete()}

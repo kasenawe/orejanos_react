@@ -20,8 +20,8 @@ function Articles() {
   }, []);
 
   return (
-    <div className="album-container">
-      <h1 className="text-center mt-5 mb-5 gallery-text">Publicaciones</h1>
+    <div className="articles-container">
+      <h1 className="text-center mt-5 mb-5 articles-text">Publicaciones</h1>
       <div className="row">
         {articles &&
           articles.map((article) => (

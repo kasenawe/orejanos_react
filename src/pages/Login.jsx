@@ -49,7 +49,7 @@ function Login() {
         <p className="text-center login-title mb-4">Administradores</p>
 
         <form className="form" onSubmit={handleSubmit} autoComplete="off">
-          <div className="input-group">
+          <div className="login-input-group">
             <label htmlFor="username" className="login-text">
               Usuario
             </label>
@@ -61,7 +61,7 @@ function Login() {
               onChange={(event) => setUsernameValue(event.target.value)}
             />
           </div>
-          <div className="input-group">
+          <div className="login-input-group">
             <label htmlFor="password" className="login-text">
               Contraseña
             </label>

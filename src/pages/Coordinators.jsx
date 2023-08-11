@@ -4,8 +4,8 @@ import CoordinatorsCard from "../components/CoordinatorsCard";
 function Coordinators() {
   return (
     <>
-      <div className="coor-container">
-        <h1 className="text-center mb-5 coord-text">COORDINADORES</h1>
+      <div className="coordinators-container">
+        <h1 className="text-center mb-5 coordinators-text">COORDINADORES</h1>
         <div className="row">
           <CoordinatorsCard
             cardName={"Nicolas Gutierrez"}

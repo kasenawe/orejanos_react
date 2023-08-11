@@ -35,7 +35,7 @@ function NavbarSite() {
   };
 
   return (
-    <div className="nav-container">
+    <div className="navbar-container">
       <Navbar expand="xxl" className="navbar-orejanos navbar-dark ">
         <Container fluid>
           <Navbar.Brand>
@@ -123,7 +123,7 @@ function NavbarSite() {
                     <ButtonNav
                       buttonText="LOGOUT"
                       onCanvas="onCanvas"
-                      onLogout="logout-color"
+                      onLogout="button-nav-logout-color"
                     />
                   </Link>
                 )}

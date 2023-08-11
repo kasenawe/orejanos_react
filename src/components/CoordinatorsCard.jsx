@@ -3,7 +3,7 @@ import "./CoordinatorsCard.css";
 function CoordinatorsCard({ cardName, cardJob, imgRoute, imgAlt }) {
   return (
     <div className="col-12 col-md-6 col-lg-3 d-flex flex-column justify-content-center align-items-center mb-4">
-      <div className="d-flex flex-column justify-content-start card">
+      <div className="d-flex flex-column justify-content-start coord-card">
         <div className="coord-card-avatar">
           <img src={imgRoute} alt={imgAlt} className="coord-card-img" />
         </div>

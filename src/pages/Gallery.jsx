@@ -57,12 +57,12 @@ function Gallery() {
         <div className="gallery-grid">
           {admin && (
             <div className="add-container" onClick={handleCreateClick}>
-              <div className="album-effect-line album-effect-line2" />
-              <div className="album-effect-line" />
+              <div className="gallery-album-effect-line gallery-album-effect-line2" />
+              <div className="gallery-album-effect-line" />
 
-              <div className="album-thumbnail-container">
-                <p className="plus-icon">+</p>
-                <h4 className="album-text">Crear album</h4>
+              <div className="gallery-album-thumbnail-container">
+                <p className="gallery-plus-icon">+</p>
+                <h4 className="gallery-album-text">Crear album</h4>
               </div>
             </div>
           )}
@@ -70,24 +70,24 @@ function Gallery() {
           {reversedAlbums.map((album) => (
             <div className={admin ? "" : ""} key={album.id}>
               <Link to={`/album/${album.slug}`}>
-                <div className="album-effect-line album-effect-line2" />
-                <div className="album-effect-line" />
+                <div className="gallery-album-effect-line gallery-album-effect-line2" />
+                <div className="gallery-album-effect-line" />
 
-                <div className="album-thumbnail-container">
+                <div className="gallery-album-thumbnail-container">
                   <img
                     src={`${import.meta.env.VITE_SUPABASE_IMG_URL}${
                       album.coverImage
                     }`}
                     alt={album.name}
-                    className="album-thumbnail-img"
+                    className="gallery-album-thumbnail-img"
                   />
-                  <h4 className="album-text">{album.name}</h4>
+                  <h4 className="gallery-album-text">{album.name}</h4>
                 </div>
               </Link>
               {admin && (
                 <div className="d-flex justify-content-center">
                   <button
-                    className="btn-delete mb-1"
+                    className="gallery-btn-delete mb-1"
                     onClick={() => handleDelete(album)}
                   >
                     Eliminar album

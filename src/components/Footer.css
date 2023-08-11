@@ -41,7 +41,7 @@
   font-size: 1rem;
   width: 100%;
 }
-.col-footer {
+.footer-col {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,7 +58,7 @@
   margin: 0;
 }
 
-.text-partner {
+.footer-partner-text {
   color: var(--color-gray-dark);
   font-size: 1.7rem;
   font-weight: 600;
@@ -75,7 +75,7 @@
   opacity: 1;
 }
 
-.partner-logo {
+.footer-partner-logo {
   height: auto;
   width: 200px;
   /* Estilos iniciales para la animación */
@@ -91,7 +91,7 @@
 }
 
 @media (max-width: 991px) {
-  .partner-logo {
+  .footer-partner-logo {
     margin-bottom: 1.3rem;
   }
 }

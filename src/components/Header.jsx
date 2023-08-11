@@ -5,10 +5,10 @@ function Header() {
   return (
     <>
       <div>
-        <Carousel className="col-12 headerContainer">
+        <Carousel className="col-12 header-container">
           <Carousel.Item>
             <div
-              className="d-block headerContainer"
+              className="d-block header-container"
               style={{
                 backgroundImage: `url(/img/header1.jpg)`,
 
@@ -21,7 +21,7 @@ function Header() {
           </Carousel.Item>
           <Carousel.Item>
             <div
-              className="d-block headerContainer"
+              className="d-block header-container"
               style={{
                 backgroundImage: `url(/img/header2.jpg)`,
 
@@ -34,7 +34,7 @@ function Header() {
           </Carousel.Item>
           <Carousel.Item>
             <div
-              className="d-block headerContainer"
+              className="d-block header-container"
               style={{
                 backgroundImage: `url(/img/header3.jpg)`,
 
@@ -47,7 +47,7 @@ function Header() {
           </Carousel.Item>
           <Carousel.Item>
             <div
-              className="d-block headerContainer"
+              className="d-block header-container"
               style={{
                 backgroundImage: `url(/img/header4.jpg)`,
 

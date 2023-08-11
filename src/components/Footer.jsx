@@ -41,29 +41,29 @@ function Footer() {
         ref={ref}
         className={`footer-partner  ${inView ? "appear-from-right" : ""}`}
       >
-        <Col xs={12} md={12} lg={4} className="col-footer">
-          <p className="text-partner py-3" ref={textRef}>
+        <Col xs={12} md={12} lg={4} className="footer-col">
+          <p className="footer-partner-text py-3" ref={textRef}>
             Nos apoya:
           </p>
         </Col>
-        <Col xs={12} md={12} lg={4} className="col-footer">
+        <Col xs={12} md={12} lg={4} className="footer-col">
           <img
             ref={partnerRef}
             src="/img/logo_kom.svg"
             alt="logo kom"
-            className="partner-logo"
+            className="footer-partner-logo"
           />
         </Col>
       </Row>
       <Row className="footer-fat">
-        <Col xs={12} md={12} lg={4} className="col-footer">
+        <Col xs={12} md={12} lg={4} className="footer-col">
           <img
             src="/img/Orejanos_green_black.png"
             alt="OrejanosLogo"
             className="footer-logo"
           />
         </Col>
-        <Col xs={12} md={12} lg={4} className="col-footer">
+        <Col xs={12} md={12} lg={4} className="footer-col">
           <p className="footer-title text-start">Info Legal</p>
 
           <button className="footer-text text-start">
@@ -76,7 +76,7 @@ function Footer() {
 
           <button className="footer-text text-start">Contacto</button>
         </Col>{" "}
-        <Col xs={12} md={12} lg={4} className="col-footer">
+        <Col xs={12} md={12} lg={4} className="footer-col">
           <p className="footer-title text-start">Síguenos</p>
 
           <button className="footer-text text-start">Facebook</button>

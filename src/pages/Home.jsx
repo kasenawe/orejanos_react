@@ -10,7 +10,7 @@ function Home() {
       <Header />
       <div className="home-container">
         <HomeIntro />
-        <div className="separator" />
+        <div className="home-separator" />
         <HomeArticles />
       </div>
     </>

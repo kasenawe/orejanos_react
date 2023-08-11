@@ -31,13 +31,13 @@
   color: var(--color-white);
 }
 
-.input-group {
+.login-input-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
 }
 
-.input-group input {
+.login-input-group input {
   padding: 0.5rem;
   margin-top: 0.3rem;
   color: var(--color-white);

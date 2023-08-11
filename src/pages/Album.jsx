@@ -13,6 +13,7 @@ function Album() {
   const admin = useSelector((state) => state.admin);
   const [render, setRender] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const getAlbum = async () => {
@@ -34,6 +35,7 @@ function Album() {
   };
 
   const handleDelete = async () => {
+    setIsLoading(true);
     try {
       await axios({
         method: "DELETE",
@@ -49,18 +51,23 @@ function Album() {
       setErrorMessage(
         "Error al eliminar el álbum. Por favor, inténtalo nuevamente."
       );
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="album-container">
-      <div className="button-container">
+      <div className="album-button-container">
         <Link to="/galeria">
-          <button className="button-gallery">VOLVER</button>
+          <button className="album-button">VOLVER</button>
         </Link>
         {admin && album && (
           <Link to="/galeria">
-            <button className="btn-delete-2" onClick={() => handleDelete()}>
+            <button
+              className="album-btn-delete-2"
+              onClick={() => handleDelete()}
+            >
               ELIMINAR
             </button>
           </Link>
@@ -70,21 +77,112 @@ function Album() {
       {album && (
         <h2 className="text-center gallery-text mt-4 mb-5">{album.name}</h2>
       )}
-
-      <div className="photo-grid">
+      {isLoading && (
+        <div>
+          <svg
+            className="loader"
+            viewBox="0 0 48 30"
+            width="48px"
+            height="30px"
+          >
+            <g
+              fill="none"
+              stroke="#1bfd9c"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1"
+            >
+              <g transform="translate(9.5,19)">
+                <circle
+                  className="loader_tire"
+                  r="9"
+                  strokeDasharray="56.549 56.549"
+                ></circle>
+                <g
+                  className="loader_spokes-spin"
+                  strokeDasharray="31.416 31.416"
+                  strokeDashoffset="-23.562"
+                >
+                  <circle className="loader_spokes" r="5"></circle>
+                  <circle
+                    className="loader_spokes"
+                    r="5"
+                    transform="rotate(180,0,0)"
+                  ></circle>
+                </g>
+              </g>
+              <g transform="translate(24,19)">
+                <g
+                  className="loader_pedals-spin"
+                  strokeDasharray="25.133 25.133"
+                  strokeDashoffset="-21.991"
+                  transform="rotate(67.5,0,0)"
+                >
+                  <circle className="loader_pedals" r="4"></circle>
+                  <circle
+                    className="loader_pedals"
+                    r="4"
+                    transform="rotate(180,0,0)"
+                  ></circle>
+                </g>
+              </g>
+              <g transform="translate(38.5,19)">
+                <circle
+                  className="loader_tire"
+                  r="9"
+                  strokeDasharray="56.549 56.549"
+                ></circle>
+                <g
+                  className="loader_spokes-spin"
+                  strokeDasharray="31.416 31.416"
+                  strokeDashoffset="-23.562"
+                >
+                  <circle className="loader_spokes" r="5"></circle>
+                  <circle
+                    className="loader_spokes"
+                    r="5"
+                    transform="rotate(180,0,0)"
+                  ></circle>
+                </g>
+              </g>
+              <polyline
+                className="loader_seat"
+                points="14 3,18 3"
+                strokeDasharray="5 5"
+              ></polyline>
+              <polyline
+                className="loader_body"
+                points="16 3,24 19,9.5 19,18 8,34 7,24 19"
+                strokeDasharray="79 79"
+              ></polyline>
+              <path
+                className="loader_handlebars"
+                d="m30,2h6s1,0,1,1-1,1-1,1"
+                strokeDasharray="10 10"
+              ></path>
+              <polyline
+                className="loader_front"
+                points="32.5 2,38.5 19"
+                strokeDasharray="19 19"
+              ></polyline>
+            </g>
+          </svg>
+        </div>
+      )}
+      <div className="album-photo-grid">
         {album &&
           album.images &&
           album.images.map((img, index) => (
             <React.Fragment key={index}>
               <div
-                className="photo-thumbnail-container"
+                className="album-photo-thumbnail-container"
                 onClick={() => setShow(true)}
               >
                 <img
                   src={`${import.meta.env.VITE_SUPABASE_IMG_URL}${img.src}`}
                   alt={img.alt}
                   onClick={() => handlePhotoClick(index)}
-                  className="photo-thumbnail-img"
+                  className="album-photo-thumbnail-img"
                 />
                 <div className="img-caption">{img.alt}</div>
               </div>

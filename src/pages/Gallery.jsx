@@ -29,6 +29,8 @@ function Gallery() {
     setShow(true);
   };
 
+  const reversedAlbums = [...albums].reverse();
+
   const handleDelete = async (album) => {
     try {
       await axios({
@@ -65,7 +67,7 @@ function Gallery() {
             </div>
           )}
 
-          {albums.map((album) => (
+          {reversedAlbums.map((album) => (
             <div className={admin ? "" : ""} key={album.id}>
               <Link to={`/album/${album.slug}`}>
                 <div className="album-effect-line album-effect-line2" />

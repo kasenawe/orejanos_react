@@ -151,6 +151,22 @@
   margin-bottom: 2rem;
 }
 
+@media (max-width: 991px) {
+  .album-edit-form {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+    align-items: start;
+
+    width: 60%;
+    height: 10rem;
+    margin-bottom: 2rem;
+  }
+}
+
 .album-edit-input {
   color: var(--color-white);
 

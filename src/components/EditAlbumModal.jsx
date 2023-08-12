@@ -1,6 +1,5 @@
 import "./EditAlbumModal.css";
 import Modal from "react-bootstrap/Modal";
-import { Form, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
@@ -40,13 +39,13 @@ function EditAlbumModal({ showEdit, setShowEdit }) {
             </h3>
 
             <div className="d-flex">
-              <Button
+              <button
                 variant="secondary"
                 onClick={handleClose}
                 className="edit-album-modal-btn"
               >
                 Aceptar
-              </Button>
+              </button>
             </div>
           </div>
         </Modal.Body>

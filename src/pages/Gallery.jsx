@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from "axios";
 
 import CreateAlbumModal from "../components/CreateAlbumModal";
+import Loader from "../components/Loader";
 import "./Gallery.css";
 
 function Gallery() {
@@ -13,14 +14,22 @@ function Gallery() {
   const [show, setShow] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [render, setRender] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const getAlbums = async () => {
-      const response = await axios({
-        method: "GET",
-        url: `${import.meta.env.VITE_API_DOMAIN}/albums`,
-      });
-      setAlbums(response.data);
+      try {
+        setIsLoading(true);
+        const response = await axios({
+          method: "GET",
+          url: `${import.meta.env.VITE_API_DOMAIN}/albums`,
+        });
+        setAlbums(response.data);
+      } catch (error) {
+        console.error("Error getting albums:", error);
+      } finally {
+        setIsLoading(false);
+      }
     };
     getAlbums();
   }, [render]);
@@ -35,6 +44,7 @@ function Gallery() {
     <>
       <h1 className="text-center mt-5 mb-5 gallery-text">Galería de fotos</h1>
       <div className="gallery-container mb-5">
+        {isLoading && <Loader />}
         <div className="gallery-grid">
           {admin && (
             <div className="add-container" onClick={handleCreateClick}>

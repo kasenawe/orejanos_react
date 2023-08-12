@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import PhotoModal from "./PhotoModal";
 import DeleteAlbumModal from "../components/DeleteAlbumModal";
 import EditAlbumModal from "../components/EditAlbumModal";
@@ -25,6 +25,7 @@ function Album() {
   useEffect(() => {
     const getAlbum = async () => {
       try {
+        setIsLoading(true);
         const response = await axios({
           method: "GET",
           url: `${import.meta.env.VITE_API_DOMAIN}/album/${params.name}`,
@@ -39,6 +40,8 @@ function Album() {
         }
       } catch (error) {
         console.error("Error getting album:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
     getAlbum();
@@ -122,9 +125,9 @@ function Album() {
             onChange={(event) => setName(event.target.value)}
             className="album-edit-input"
           />
-          <Button type="submit" className="album-button">
+          <button type="submit" className="album-button">
             Guardar cambios
-          </Button>{" "}
+          </button>
           {/* Botón para guardar cambios */}
         </Form>
       ) : (

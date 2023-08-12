@@ -1,8 +1,7 @@
 import "./DeleteAlbumModal.css";
 import Modal from "react-bootstrap/Modal";
-import { Form, Button } from "react-bootstrap";
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
@@ -80,22 +79,22 @@ function DeleteAlbumModal({ showDelete, setShowDelete, album }) {
             {isLoading && <Loader />}
 
             <div className="d-flex gap-4">
-              <Button
+              <button
                 variant="secondary"
                 onClick={handleClose}
                 className="delete-album-modal-btn"
               >
                 No
-              </Button>
+              </button>
 
-              <Button
+              <button
                 type="submit"
                 variant="primary"
                 className="delete-album-modal-btn"
                 onClick={() => handleDelete()}
               >
                 Si
-              </Button>
+              </button>
             </div>
           </div>
         </Modal.Body>

@@ -1,8 +1,8 @@
 import "./CreateAlbumModal.css";
 import Modal from "react-bootstrap/Modal";
-import { Form, Button } from "react-bootstrap";
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { Form } from "react-bootstrap";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -116,21 +116,21 @@ function CreateAlbumModal({ show, setShow, render, setRender }) {
                 required
               />
               <div className="d-flex gap-4">
-                <Button
+                <button
                   variant="secondary"
                   onClick={handleClose}
                   className="create-modal-btn"
                 >
                   Cerrar
-                </Button>
+                </button>
 
-                <Button
+                <button
                   type="submit"
                   variant="primary"
                   className="create-modal-btn"
                 >
                   Crear
-                </Button>
+                </button>
               </div>
             </Form>
           </div>

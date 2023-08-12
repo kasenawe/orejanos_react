@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import PhotoModal from "./PhotoModal";
 import DeleteAlbumModal from "../components/DeleteAlbumModal";
 import EditAlbumModal from "../components/EditAlbumModal";
+import AddPhotoModal from "../components/AddPhotoModal";
 import Loader from "../components/Loader";
 import axios from "axios";
 
@@ -45,7 +46,7 @@ function Album() {
       }
     };
     getAlbum();
-  }, [params.name]);
+  }, [params.name, render]);
 
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
   const [show, setShow] = useState(null);
@@ -94,6 +95,11 @@ function Album() {
     }
   };
 
+  const [showAdd, setShowAdd] = useState(false);
+  const handleAddClick = async () => {
+    setShowAdd(true);
+  };
+
   return (
     <div className="album-container">
       {isLoading && <Loader />}
@@ -114,22 +120,25 @@ function Album() {
       </div>
 
       {album && admin ? (
-        <Form onSubmit={handleEditAlbum} className="album-edit-form gap-2">
-          <Form.Label htmlFor="name" className="album-edit-label">
-            Nombre del album:
-          </Form.Label>
-          <Form.Control
-            type="text"
-            id="name"
-            value={nameValue}
-            onChange={(event) => setName(event.target.value)}
-            className="album-edit-input"
-          />
-          <button type="submit" className="album-button">
-            Guardar cambios
-          </button>
-          {/* Botón para guardar cambios */}
-        </Form>
+        <>
+          <h1 className="text-center text-danger">Modo Editor</h1>
+          <Form onSubmit={handleEditAlbum} className="album-edit-form gap-2">
+            <Form.Label htmlFor="name" className="album-edit-label">
+              Cambiar nombre:
+            </Form.Label>
+            <Form.Control
+              type="text"
+              id="name"
+              value={nameValue}
+              onChange={(event) => setName(event.target.value)}
+              className="album-edit-input"
+            />
+            <button type="submit" className="album-button">
+              Aplicar
+            </button>
+            {/* Botón para guardar cambios */}
+          </Form>
+        </>
       ) : (
         album && (
           <h2 className="text-center gallery-text mt-4 mb-5">{album.name}</h2>
@@ -137,6 +146,11 @@ function Album() {
       )}
 
       <div className="album-photo-grid">
+        {admin && (
+          <div className="album-new-photo-container" onClick={handleAddClick}>
+            <p className="album-plus-icon">+</p>
+          </div>
+        )}
         {album &&
           album.images &&
           album.images.map((img, index) => (
@@ -168,6 +182,13 @@ function Album() {
                 album={album}
               />
               <EditAlbumModal showEdit={showEdit} setShowEdit={setShowEdit} />
+              <AddPhotoModal
+                showAdd={showAdd}
+                setShowAdd={setShowAdd}
+                render={render}
+                setRender={setRender}
+                album={album}
+              />
             </React.Fragment>
           ))}
       </div>

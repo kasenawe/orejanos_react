@@ -155,24 +155,36 @@
   .album-edit-form {
     display: flex;
     flex-direction: column;
-
     margin-top: 2rem;
     margin-bottom: 2rem;
-    justify-content: center;
-    align-items: start;
-
+    justify-content: space-between;
+    align-items: center;
     width: 60%;
     height: 10rem;
-    margin-bottom: 2rem;
   }
 }
 
 .album-edit-input {
   color: var(--color-white);
 
-  width: fit-content;
+  max-width: fit-content;
 }
 
 .album-edit-label {
   color: var(--color-white);
+}
+
+.album-new-photo-container {
+  position: relative;
+  height: 91px;
+  width: 129px;
+  border: 1px var(--color-green-separator) solid;
+  margin: 1px;
+  cursor: pointer;
+}
+
+.album-plus-icon {
+  font-size: 3.5rem !important;
+  color: var(--color-green-separator);
+  text-align: center;
 }

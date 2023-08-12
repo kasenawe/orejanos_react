@@ -4,7 +4,7 @@ import { Form, Button } from "react-bootstrap";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import PhotoModal from "./PhotoModal";
-import DeleteAlbumModal from "../components/deleteAlbumModal";
+import DeleteAlbumModal from "../components/DeleteAlbumModal";
 import axios from "axios";
 
 import "./Album.css";

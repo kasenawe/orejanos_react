@@ -5,6 +5,8 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import PhotoModal from "./PhotoModal";
 import DeleteAlbumModal from "../components/DeleteAlbumModal";
+import EditAlbumModal from "../components/EditAlbumModal";
+import Loader from "../components/Loader";
 import axios from "axios";
 
 import "./Album.css";
@@ -15,18 +17,32 @@ function Album() {
   const admin = useSelector((state) => state.admin);
   const [errorMessage, setErrorMessage] = useState("");
   const [nameValue, setName] = useState("");
+  const [render, setRender] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getAlbum = async () => {
-      const response = await axios({
-        method: "GET",
-        url: `${import.meta.env.VITE_API_DOMAIN}/album/${params.name}`,
-      });
-      setAlbum(response.data.album);
-      setName(response.data.album.name);
+      try {
+        const response = await axios({
+          method: "GET",
+          url: `${import.meta.env.VITE_API_DOMAIN}/album/${params.name}`,
+        });
+
+        if (response.data.album) {
+          setAlbum(response.data.album);
+          setName(response.data.album.name);
+        } else {
+          console.log("Album not found");
+          navigate("/galeria");
+        }
+      } catch (error) {
+        console.error("Error getting album:", error);
+      }
     };
     getAlbum();
-  }, []);
+  }, [params.name]);
 
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
   const [show, setShow] = useState(null);
@@ -42,37 +58,42 @@ function Album() {
     setShowDelete(true);
   };
 
+  const [showEdit, setShowEdit] = useState(false);
+
   const handleEditAlbum = async (event) => {
     event.preventDefault(); // Evitar que el formulario se envíe automáticamente
 
     try {
+      setIsLoading(true);
       const response = await axios({
-        method: "PATCH", // Utiliza el método HTTP adecuado para actualizar
+        method: "PATCH",
         url: `${import.meta.env.VITE_API_DOMAIN}/admin/album/edit/${album.id}`,
         data: {
-          name: nameValue, // Utiliza el nuevo valor del nombre
+          name: nameValue,
         },
         headers: {
           Authorization: "Bearer " + admin.token,
         },
       });
-
+      setRender(render + 1);
+      console.log(response.data);
       // Actualiza el estado del álbum con el nuevo nombre
-      setAlbum((prevAlbum) => ({
-        ...prevAlbum,
-        name: nameValue,
-      }));
+      setAlbum((prevAlbum) => ({ ...prevAlbum, name: nameValue }));
 
-      // Opcional: Podrías mostrar un mensaje de éxito aquí si lo deseas
+      // Opcional: mostrar un mensaje de éxito aquí
     } catch (error) {
-      // Maneja el error aquí (puedes mostrar un mensaje de error, por ejemplo)
+      // Manejar el error aquí (puede mostrar un mensaje de error, por ejemplo)
       console.error("Error updating album name:", error);
       setErrorMessage("Error updating album name.");
+    } finally {
+      setIsLoading(false);
+      setShowEdit(true);
     }
   };
 
   return (
     <div className="album-container">
+      {isLoading && <Loader />}
       <div className="album-button-container">
         <Link to="/galeria">
           <button className="album-button">VOLVER</button>
@@ -107,7 +128,9 @@ function Album() {
           {/* Botón para guardar cambios */}
         </Form>
       ) : (
-        <h2 className="text-center gallery-text mt-4 mb-5">{album.name}</h2>
+        album && (
+          <h2 className="text-center gallery-text mt-4 mb-5">{album.name}</h2>
+        )
       )}
 
       <div className="album-photo-grid">
@@ -141,6 +164,7 @@ function Album() {
                 setShowDelete={setShowDelete}
                 album={album}
               />
+              <EditAlbumModal showEdit={showEdit} setShowEdit={setShowEdit} />
             </React.Fragment>
           ))}
       </div>

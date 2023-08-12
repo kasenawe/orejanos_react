@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import React from "react";
+import { Form, Button } from "react-bootstrap";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import PhotoModal from "./PhotoModal";
+import DeleteAlbumModal from "../components/deleteAlbumModal";
 import axios from "axios";
 
 import "./Album.css";
@@ -11,11 +13,8 @@ function Album() {
   const params = useParams();
   const [album, setAlbum] = useState({});
   const admin = useSelector((state) => state.admin);
-  const [render, setRender] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
-  const navigate = useNavigate();
+  const [nameValue, setName] = useState("");
 
   useEffect(() => {
     const getAlbum = async () => {
@@ -24,9 +23,10 @@ function Album() {
         url: `${import.meta.env.VITE_API_DOMAIN}/album/${params.name}`,
       });
       setAlbum(response.data.album);
+      setName(response.data.album.name);
     };
     getAlbum();
-  }, [render]);
+  }, []);
 
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
   const [show, setShow] = useState(null);
@@ -36,26 +36,38 @@ function Album() {
     setShow(true);
   };
 
-  const handleDelete = async () => {
-    try {
-      setIsLoading(true);
-      await axios({
-        method: "DELETE",
-        url: `${import.meta.env.VITE_API_DOMAIN}/admin/album/${album.id}`,
+  const [showDelete, setShowDelete] = useState(null);
 
+  const handleDeleteClick = () => {
+    setShowDelete(true);
+  };
+
+  const handleEditAlbum = async (event) => {
+    event.preventDefault(); // Evitar que el formulario se envíe automáticamente
+
+    try {
+      const response = await axios({
+        method: "PATCH", // Utiliza el método HTTP adecuado para actualizar
+        url: `${import.meta.env.VITE_API_DOMAIN}/admin/album/edit/${album.id}`,
+        data: {
+          name: nameValue, // Utiliza el nuevo valor del nombre
+        },
         headers: {
           Authorization: "Bearer " + admin.token,
         },
       });
-      setRender(render + 1);
+
+      // Actualiza el estado del álbum con el nuevo nombre
+      setAlbum((prevAlbum) => ({
+        ...prevAlbum,
+        name: nameValue,
+      }));
+
+      // Opcional: Podrías mostrar un mensaje de éxito aquí si lo deseas
     } catch (error) {
-      console.error("Error al eliminar el álbum:", error);
-      setErrorMessage(
-        "Error al eliminar el álbum. Por favor, inténtalo nuevamente."
-      );
-    } finally {
-      setIsLoading(false);
-      navigate("/galeria");
+      // Maneja el error aquí (puedes mostrar un mensaje de error, por ejemplo)
+      console.error("Error updating album name:", error);
+      setErrorMessage("Error updating album name.");
     }
   };
 
@@ -69,7 +81,7 @@ function Album() {
           <Link>
             <button
               className="album-btn-delete-2"
-              onClick={() => handleDelete()}
+              onClick={() => handleDeleteClick()}
             >
               ELIMINAR
             </button>
@@ -77,103 +89,27 @@ function Album() {
         )}
       </div>
 
-      {album && (
+      {album && admin ? (
+        <Form onSubmit={handleEditAlbum} className="album-edit-form gap-2">
+          <Form.Label htmlFor="name" className="album-edit-label">
+            Nombre del album:
+          </Form.Label>
+          <Form.Control
+            type="text"
+            id="name"
+            value={nameValue}
+            onChange={(event) => setName(event.target.value)}
+            className="album-edit-input"
+          />
+          <Button type="submit" className="album-button">
+            Guardar cambios
+          </Button>{" "}
+          {/* Botón para guardar cambios */}
+        </Form>
+      ) : (
         <h2 className="text-center gallery-text mt-4 mb-5">{album.name}</h2>
       )}
-      {isLoading && (
-        <div className="loader-overlay">
-          <div className="loader-container">
-            <svg
-              className="loader"
-              viewBox="0 0 48 30"
-              width="48px"
-              height="30px"
-            >
-              <g
-                fill="none"
-                stroke="#1bfd9c"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1"
-              >
-                <g transform="translate(9.5,19)">
-                  <circle
-                    className="loader_tire"
-                    r="9"
-                    strokeDasharray="56.549 56.549"
-                  ></circle>
-                  <g
-                    className="loader_spokes-spin"
-                    strokeDasharray="31.416 31.416"
-                    strokeDashoffset="-23.562"
-                  >
-                    <circle className="loader_spokes" r="5"></circle>
-                    <circle
-                      className="loader_spokes"
-                      r="5"
-                      transform="rotate(180,0,0)"
-                    ></circle>
-                  </g>
-                </g>
-                <g transform="translate(24,19)">
-                  <g
-                    className="loader_pedals-spin"
-                    strokeDasharray="25.133 25.133"
-                    strokeDashoffset="-21.991"
-                    transform="rotate(67.5,0,0)"
-                  >
-                    <circle className="loader_pedals" r="4"></circle>
-                    <circle
-                      className="loader_pedals"
-                      r="4"
-                      transform="rotate(180,0,0)"
-                    ></circle>
-                  </g>
-                </g>
-                <g transform="translate(38.5,19)">
-                  <circle
-                    className="loader_tire"
-                    r="9"
-                    strokeDasharray="56.549 56.549"
-                  ></circle>
-                  <g
-                    className="loader_spokes-spin"
-                    strokeDasharray="31.416 31.416"
-                    strokeDashoffset="-23.562"
-                  >
-                    <circle className="loader_spokes" r="5"></circle>
-                    <circle
-                      className="loader_spokes"
-                      r="5"
-                      transform="rotate(180,0,0)"
-                    ></circle>
-                  </g>
-                </g>
-                <polyline
-                  className="loader_seat"
-                  points="14 3,18 3"
-                  strokeDasharray="5 5"
-                ></polyline>
-                <polyline
-                  className="loader_body"
-                  points="16 3,24 19,9.5 19,18 8,34 7,24 19"
-                  strokeDasharray="79 79"
-                ></polyline>
-                <path
-                  className="loader_handlebars"
-                  d="m30,2h6s1,0,1,1-1,1-1,1"
-                  strokeDasharray="10 10"
-                ></path>
-                <polyline
-                  className="loader_front"
-                  points="32.5 2,38.5 19"
-                  strokeDasharray="19 19"
-                ></polyline>
-              </g>
-            </svg>
-          </div>
-        </div>
-      )}
+
       <div className="album-photo-grid">
         {album &&
           album.images &&
@@ -199,6 +135,11 @@ function Album() {
                 images={album.images} // Pasar todas las imágenes del álbum a PhotoModal
                 selectedPhotoIndex={selectedPhotoIndex}
                 setSelectedPhotoIndex={setSelectedPhotoIndex}
+              />
+              <DeleteAlbumModal
+                showDelete={showDelete}
+                setShowDelete={setShowDelete}
+                album={album}
               />
             </React.Fragment>
           ))}

@@ -42,7 +42,7 @@
 .album-button {
   --green: #1bfd9c;
   font-size: 15px;
-  padding: 0.7em 2.7em;
+  padding: 0.7em 1.5em;
   letter-spacing: 0.06em;
   position: relative;
   font-family: inherit;
@@ -92,7 +92,7 @@
 
 .album-btn-delete-2 {
   font-size: 15px;
-  padding: 0.7em 2.7em;
+  padding: 0.7em 1.5em;
   letter-spacing: 0.06em;
   position: relative;
   font-family: inherit;
@@ -137,4 +137,26 @@
 
 .album-btn-delete-2:hover:before {
   transform: translateX(15em);
+}
+
+.album-edit-form {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 60%;
+  height: 3rem;
+  margin-bottom: 2rem;
+}
+
+.album-edit-input {
+  color: var(--color-white);
+
+  width: fit-content;
+}
+
+.album-edit-label {
+  color: var(--color-white);
 }

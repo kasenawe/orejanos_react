@@ -37,7 +37,6 @@ function Album() {
           setName(response.data.album.name);
         } else {
           console.log("Album not found");
-          navigate("/galeria");
         }
       } catch (error) {
         console.error("Error getting album:", error);
@@ -49,11 +48,11 @@ function Album() {
   }, [params.name, render]);
 
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
-  const [show, setShow] = useState(null);
+  const [showPhotoModal, setShowPhotoModal] = useState(false);
 
   const handlePhotoClick = (photoIndex) => {
     setSelectedPhotoIndex(photoIndex);
-    setShow(true);
+    setShowPhotoModal(true);
   };
 
   const [showDelete, setShowDelete] = useState(null);
@@ -62,7 +61,7 @@ function Album() {
     setShowDelete(true);
   };
 
-  const [showEdit, setShowEdit] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   const handleEditAlbum = async (event) => {
     event.preventDefault(); // Evitar que el formulario se envíe automáticamente
@@ -85,13 +84,13 @@ function Album() {
       setAlbum((prevAlbum) => ({ ...prevAlbum, name: nameValue }));
 
       // Opcional: mostrar un mensaje de éxito aquí
+      setShowEditModal(true);
     } catch (error) {
       // Manejar el error aquí (puede mostrar un mensaje de error, por ejemplo)
       console.error("Error updating album name:", error);
       setErrorMessage("Error updating album name.");
     } finally {
       setIsLoading(false);
-      setShowEdit(true);
     }
   };
 
@@ -155,10 +154,7 @@ function Album() {
           album.images &&
           album.images.map((img, index) => (
             <React.Fragment key={index}>
-              <div
-                className="album-photo-thumbnail-container"
-                onClick={() => setShow(true)}
-              >
+              <div className="album-photo-thumbnail-container">
                 <img
                   src={`${import.meta.env.VITE_SUPABASE_IMG_URL}${img.src}`}
                   alt={img.alt}
@@ -170,8 +166,8 @@ function Album() {
 
               <PhotoModal
                 key={`modal-${index}`}
-                show={show}
-                setShow={setShow}
+                showPhotoModal={showPhotoModal}
+                setShowPhotoModal={setShowPhotoModal}
                 images={album.images} // Pasar todas las imágenes del álbum a PhotoModal
                 selectedPhotoIndex={selectedPhotoIndex}
                 setSelectedPhotoIndex={setSelectedPhotoIndex}
@@ -181,16 +177,21 @@ function Album() {
                 setShowDelete={setShowDelete}
                 album={album}
               />
-              <EditAlbumModal showEdit={showEdit} setShowEdit={setShowEdit} />
-              <AddPhotoModal
-                showAdd={showAdd}
-                setShowAdd={setShowAdd}
+              <EditAlbumModal
+                showEditModal={showEditModal}
+                setShowEditModal={setShowEditModal}
                 render={render}
                 setRender={setRender}
-                album={album}
               />
             </React.Fragment>
           ))}
+        <AddPhotoModal
+          showAdd={showAdd}
+          setShowAdd={setShowAdd}
+          render={render}
+          setRender={setRender}
+          album={album}
+        />
       </div>
     </div>
   );

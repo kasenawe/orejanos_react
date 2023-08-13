@@ -72,9 +72,14 @@ function Gallery() {
                     alt={album.name}
                     className="gallery-album-thumbnail-img"
                   />
+
                   <h4 className="gallery-album-text">{album.name}</h4>
                 </div>
               </Link>
+              <p className="text-center text-white">
+                {album.images.length}{" "}
+                {album.images.length > 1 ? "fotos" : "foto"}
+              </p>
             </div>
           ))}
         </div>

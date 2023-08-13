@@ -3,19 +3,24 @@ import Modal from "react-bootstrap/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-function EditAlbumModal({ showEdit, setShowEdit }) {
+function EditAlbumModal({
+  showEditModal,
+  setShowEditModal,
+  render,
+  setRender,
+}) {
   const handleClose = () => {
-    setShowEdit(false);
+    setShowEditModal(false);
+    setRender(render + 1);
   };
-  const handleShow = () => setShow(true);
 
   return (
     <>
       <Modal
         size="md"
-        show={showEdit}
+        show={showEditModal}
         onHide={() => {
-          setShowEdit(false);
+          setShowEditModal(false);
           setErrorMessage("");
         }}
         aria-labelledby="example-modal-sizes-title-lg"
@@ -25,7 +30,7 @@ function EditAlbumModal({ showEdit, setShowEdit }) {
           <div
             className="close-button"
             onClick={() => {
-              setShowEdit(false);
+              setShowEditModal(false);
               setErrorMessage("");
             }}
           >

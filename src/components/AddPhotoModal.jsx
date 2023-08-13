@@ -13,11 +13,12 @@ function AddPhotoModal({ showAdd, setShowAdd, render, setRender, album }) {
 
   const handleClose = () => {
     setShowAdd(false);
+    setImages([]);
     setErrorMessage("");
   };
-  const handleShow = () => setShowAdd(true);
 
   const [imagesValue, setImages] = useState([]);
+  const [descriptions, setDescriptions] = useState([]);
 
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -31,6 +32,7 @@ function AddPhotoModal({ showAdd, setShowAdd, render, setRender, album }) {
 
       for (let i = 0; i < imagesValue.length; i++) {
         formData.append("images", imagesValue[i]);
+        formData.append("descriptions", descriptions[i] || ""); // Si no hay descripción, se agrega una cadena vacía
       }
 
       await axios({
@@ -62,6 +64,8 @@ function AddPhotoModal({ showAdd, setShowAdd, render, setRender, album }) {
         onHide={() => {
           setShowAdd(false);
           setErrorMessage("");
+          setImages([]);
+          setDescriptions([]);
         }}
         aria-labelledby="example-modal-sizes-title-lg"
         centered
@@ -72,6 +76,8 @@ function AddPhotoModal({ showAdd, setShowAdd, render, setRender, album }) {
             onClick={() => {
               setShowAdd(false);
               setErrorMessage("");
+              setImages([]);
+              setDescriptions([]);
             }}
           >
             <div className="close-circle-black">
@@ -101,6 +107,24 @@ function AddPhotoModal({ showAdd, setShowAdd, render, setRender, album }) {
                 onChange={(event) => setImages(event.target.files)}
                 required
               />
+              {imagesValue.length > 0 &&
+                Array.from(imagesValue).map((image, index) => (
+                  <div key={index} className="add-photo-modal-input-group">
+                    <Form.Label htmlFor={`description-${index}`}>
+                      Descripción de la Foto {index + 1}
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      id={`description-${index}`}
+                      value={descriptions[index] || ""}
+                      onChange={(event) => {
+                        const updatedDescriptions = [...descriptions];
+                        updatedDescriptions[index] = event.target.value;
+                        setDescriptions(updatedDescriptions);
+                      }}
+                    />
+                  </div>
+                ))}
               <div className="d-flex gap-4">
                 <button
                   variant="secondary"

@@ -1,5 +1,5 @@
 .add-photo-modal-body {
-  height: 600px !important;
+  height: auto !important;
   display: flex;
   justify-content: center;
   border: var(--color-green-separator) 1px solid;

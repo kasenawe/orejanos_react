@@ -58,5 +58,6 @@
 }
 
 .modal-content {
+  height: fit-content;
   background-color: var(--color-gray-dark);
 }

@@ -47,7 +47,7 @@
 .photo-modal-delete-icon {
   position: absolute;
   top: 8px;
-  right: 50px;
+  left: 20px;
   cursor: pointer;
 }
 

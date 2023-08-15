@@ -14,6 +14,7 @@ function AddPhotoModal({ showAdd, setShowAdd, render, setRender, album }) {
   const handleClose = () => {
     setShowAdd(false);
     setImages([]);
+    setDescriptions([]);
     setErrorMessage("");
   };
 
@@ -45,6 +46,8 @@ function AddPhotoModal({ showAdd, setShowAdd, render, setRender, album }) {
         },
       });
       setRender(render + 1);
+      setImages([]);
+      setDescriptions([]);
       handleClose();
     } catch (error) {
       console.error("Error al crear el álbum:", error);
@@ -103,10 +106,11 @@ function AddPhotoModal({ showAdd, setShowAdd, render, setRender, album }) {
                 type="file"
                 id="images"
                 multiple // Allow multiple file selection
-                className="add-photo-modal-input-group"
+                className="add-photo-modal-input-group text-white"
                 onChange={(event) => setImages(event.target.files)}
                 required
               />
+
               {imagesValue.length > 0 &&
                 Array.from(imagesValue).map((image, index) => (
                   <div key={index} className="add-photo-modal-input-group">
@@ -127,6 +131,7 @@ function AddPhotoModal({ showAdd, setShowAdd, render, setRender, album }) {
                 ))}
               <div className="d-flex gap-4">
                 <button
+                  type="button"
                   variant="secondary"
                   onClick={handleClose}
                   className="add-photo-modal-btn"

@@ -1,12 +1,12 @@
-.add-photo-modal-body {
-  height: auto !important;
+.delete-photo-modal-body {
+  height: 400px !important;
   display: flex;
   justify-content: center;
   border: var(--color-green-separator) 1px solid;
   border-radius: 2%;
 }
 
-.add-photo-modal-content {
+.delete-photo-modal-content {
   background-color: var(--color-gray-dark);
   display: flex;
   flex-direction: column;
@@ -16,23 +16,22 @@
   gap: 3rem;
 }
 
-.add-photo-modal-text {
+.delete-photo-modal-text {
   color: var(--color-white);
 }
 
-.add-photo-modal-input-group {
+.delete-photo-modal-input-group {
   background-color: var(--color-gray-dark);
   padding: 0.5rem;
   color: var(--color-white);
 }
 
-.add-photo-modal-btn {
+.delete-photo-modal-btn {
   --green: #1bfd9c;
   font-size: 15px;
   padding: 0.7em 2.7em;
   width: 80%;
   margin-top: 2rem;
-  margin-bottom: 1rem;
   letter-spacing: 0.06em;
   position: relative;
   font-family: inherit;
@@ -53,13 +52,13 @@
     0 0 9px 3px rgba(27, 253, 156, 0.1);
 }
 
-.add-photo-modal-btn:hover {
+.delete-photo-modal-btn:hover {
   color: #82ffc9;
   box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.6),
     0 0 9px 3px rgba(27, 253, 156, 0.2);
 }
 
-.add-photo-modal-btn:before {
+.delete-photo-modal-btn:before {
   content: "";
   position: absolute;
   left: -4em;
@@ -76,10 +75,10 @@
   );
 }
 
-.add-photo-modal-btn:hover:before {
+.delete-photo-modal-btn:hover:before {
   transform: translateX(15em);
 }
 
-.add-photo-modal-error-message {
+.delete-photo-modal-error-message {
   color: var(--color-red-alert);
 }

@@ -1,5 +1,5 @@
 .create-modal-body {
-  height: 600px !important;
+  height: auto !important;
   display: flex;
   justify-content: center;
   border: var(--color-green-separator) 1px solid;
@@ -7,7 +7,6 @@
 }
 
 .create-modal-content {
-  background-color: var(--color-gray-dark);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,10 +19,13 @@
   color: var(--color-white);
 }
 
-.create-modal-input-group {
-  background-color: var(--color-gray-dark);
-  padding: 0.5rem;
+.form-control {
   color: var(--color-white);
+}
+
+.form-label {
+  color: var(--color-white);
+  margin-top: 1rem;
 }
 
 .create-modal-btn {
@@ -32,6 +34,7 @@
   padding: 0.7em 2.7em;
   width: 80%;
   margin-top: 2rem;
+  margin-bottom: 1rem;
   letter-spacing: 0.06em;
   position: relative;
   font-family: inherit;

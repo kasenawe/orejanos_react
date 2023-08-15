@@ -171,6 +171,9 @@ function Album() {
                 images={album.images} // Pasar todas las imágenes del álbum a PhotoModal
                 selectedPhotoIndex={selectedPhotoIndex}
                 setSelectedPhotoIndex={setSelectedPhotoIndex}
+                album={album}
+                render={render}
+                setRender={setRender}
               />
               <DeleteAlbumModal
                 showDelete={showDelete}

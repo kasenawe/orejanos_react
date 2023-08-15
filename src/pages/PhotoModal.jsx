@@ -2,6 +2,7 @@ import "./PhotoModal.css";
 import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Carousel from "react-bootstrap/Carousel";
+import { useSelector } from "react-redux";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -10,6 +11,7 @@ import {
   faArrowAltCircleRight,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
+import DeletePhotoModal from "../components/DeletePhotoModal";
 
 function PhotoModal({
   showPhotoModal,
@@ -17,7 +19,11 @@ function PhotoModal({
   images,
   selectedPhotoIndex,
   setSelectedPhotoIndex,
+  album,
+  render,
+  setRender,
 }) {
+  const admin = useSelector((state) => state.admin);
   const handleCarouselSelect = (selectedIndex) => {
     // Esta función actualiza el índice de la foto seleccionada en el carousel.
     setSelectedPhotoIndex(selectedIndex);
@@ -31,6 +37,11 @@ function PhotoModal({
 
   const handleClosePhotoModal = () => {
     setShowPhotoModal(false);
+  };
+
+  const [showDeletePhotoModal, setShowDeletePhotoModal] = useState(false);
+  const handleDeletePhotoModal = () => {
+    setShowDeletePhotoModal(true);
   };
 
   return (
@@ -48,6 +59,14 @@ function PhotoModal({
               <FontAwesomeIcon icon={faTimes} className="close-icon" />
             </div>
           </div>
+          {admin && (
+            <div
+              className="photo-modal-delete-icon"
+              onClick={handleDeletePhotoModal}
+            >
+              <img src="/img/trash3-fill.svg" alt="trash-icon" />
+            </div>
+          )}
           <Carousel
             className="mt-4"
             controls={arrowIcons}
@@ -85,11 +104,23 @@ function PhotoModal({
               </Carousel.Item>
             ))}
           </Carousel>
-          <p className="text-white text-center mb-0 mt-2">
-            {images[selectedPhotoIndex].description}
-          </p>
+          {images[selectedPhotoIndex] && (
+            <p className="text-white text-center mb-0 mt-2">
+              {images[selectedPhotoIndex].description}
+            </p>
+          )}
         </Modal.Body>
       </Modal>
+      <DeletePhotoModal
+        showDeletePhotoModal={showDeletePhotoModal}
+        setShowDeletePhotoModal={setShowDeletePhotoModal}
+        image={images[selectedPhotoIndex]}
+        showPhotoModal={showPhotoModal}
+        setShowPhotoModal={setShowPhotoModal}
+        album={album}
+        render={render}
+        setRender={setRender}
+      />
     </>
   );
 }

@@ -91,7 +91,6 @@ function PhotoModal({
 
   return (
     <>
-      {isLoading && <Loader />}
       <Modal
         size="lg"
         show={showPhotoModal}
@@ -183,6 +182,7 @@ function PhotoModal({
             )
           )}
         </Modal.Body>
+        {isLoading && <Loader />}
       </Modal>
       <DeletePhotoModal
         showDeletePhotoModal={showDeletePhotoModal}

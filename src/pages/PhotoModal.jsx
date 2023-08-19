@@ -63,7 +63,7 @@ function PhotoModal({
       setIsLoading(true);
       const response = await axios({
         method: "PATCH",
-        url: `${import.meta.env.VITE_API_DOMAIN}/admin/album/edit/photo/${
+        url: `${import.meta.env.VITE_API_DOMAIN}/api/album/edit/photo/${
           images[selectedPhotoIndex]._id
         }`,
         data: {

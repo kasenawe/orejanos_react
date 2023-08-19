@@ -1,0 +1,20 @@
+.admins-container {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 2%;
+}
+
+.admins-text {
+  color: var(--color-white);
+}
+
+.admins-header {
+  text-align: center;
+  color: var(--color-green-separator);
+}
+
+.admins-plus-icon {
+  position: relative;
+  left: 95%;
+  bottom: 10px;
+}

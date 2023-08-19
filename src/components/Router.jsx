@@ -8,6 +8,8 @@ import Contact from "../pages/Contact";
 import Album from "../pages/Album";
 import Articles from "../pages/Articles";
 import Login from "../pages/Login";
+import Admins from "../pages/Admins";
+import ProtectedRoute from "./ProtectedRoute";
 import NotFound from "../pages/NotFound";
 
 function Router() {
@@ -21,6 +23,9 @@ function Router() {
       <Route path="/horarios" element={<Horarios />} />
       <Route path="/contacto" element={<Contact />} />
       <Route path="/login" element={<Login />} />
+      <Route element={<ProtectedRoute />}>
+        <Route path="/admins" element={<Admins />} />
+      </Route>
       {/* Ruta de captura para manejar rutas desconocidas */}
       <Route path="*" element={<NotFound />} />
     </Routes>

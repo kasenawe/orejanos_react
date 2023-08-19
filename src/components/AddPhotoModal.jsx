@@ -38,7 +38,7 @@ function AddPhotoModal({ showAdd, setShowAdd, render, setRender, album }) {
 
       await axios({
         method: "PATCH",
-        url: `${import.meta.env.VITE_API_DOMAIN}/admin/album/add/${album.id}`,
+        url: `${import.meta.env.VITE_API_DOMAIN}/api/album/add/${album.id}`,
         data: formData,
         headers: {
           "Content-Type": "multipart/form-data",

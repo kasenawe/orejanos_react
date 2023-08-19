@@ -47,7 +47,7 @@ function CreateAlbumModal({ show, setShow, render, setRender }) {
 
       await axios({
         method: "POST",
-        url: `${import.meta.env.VITE_API_DOMAIN}/admin/album`,
+        url: `${import.meta.env.VITE_API_DOMAIN}/api/album`,
         data: formData,
         headers: {
           "Content-Type": "multipart/form-data",

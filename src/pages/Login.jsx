@@ -38,6 +38,7 @@ function Login() {
       }
     } catch (error) {
       setError("Error en el servidor");
+      console.error("Server error:", error);
     }
   }
 

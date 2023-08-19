@@ -70,7 +70,7 @@ function Album() {
       setIsLoading(true);
       const response = await axios({
         method: "PATCH",
-        url: `${import.meta.env.VITE_API_DOMAIN}/admin/album/edit/${album.id}`,
+        url: `${import.meta.env.VITE_API_DOMAIN}/api/album/edit/${album.id}`,
         data: {
           name: nameValue,
         },

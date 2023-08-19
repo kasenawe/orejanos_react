@@ -34,7 +34,7 @@ function DeletePhotoModal({
       setIsLoading(true);
       await axios({
         method: "DELETE",
-        url: `${import.meta.env.VITE_API_DOMAIN}/admin/album/delete/image/${
+        url: `${import.meta.env.VITE_API_DOMAIN}/api/album/delete/image/${
           image._id
         }`,
 

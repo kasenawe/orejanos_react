@@ -67,7 +67,7 @@ function Admins() {
   return (
     <>
       <div className="admins-container">
-        <h1 className="text-center mb-5 admins-text">Administrators</h1>
+        <h1 className="text-center mb-5 admins-text">Administradores</h1>
         <img
           src="/img/plus-square-fill.svg"
           alt="add icon"
@@ -80,16 +80,16 @@ function Admins() {
           <thead>
             <tr>
               <th scope="col" className="admins-header">
-                Username
+                Usuario
               </th>
               <th scope="col" className="admins-header">
-                Firstname
+                Nombre
               </th>
               <th scope="col" className="admins-header">
-                Lastname
+                Apellido
               </th>
               <th scope="col" className="admins-header">
-                Actions
+                Acciones
               </th>
             </tr>
           </thead>

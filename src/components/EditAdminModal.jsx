@@ -92,13 +92,15 @@ function EditAdminModal({
             </div>
           </div>
           <div className="create-modal-content">
-            <h3 className="create-modal-text text-center">Edit admin</h3>
+            <h3 className="create-modal-text text-center">
+              Editar administrador
+            </h3>
             {errorMessage && (
               <p className="create-modal-error-message">{errorMessage}</p>
             )}
             {isLoading && <Loader />}
             <Form onSubmit={editAdmin}>
-              <Form.Label htmlFor="username">Username</Form.Label>
+              <Form.Label htmlFor="username">Usuario</Form.Label>
               <Form.Control
                 type="text"
                 id="username"
@@ -106,7 +108,7 @@ function EditAdminModal({
                 value={username}
                 onChange={(event) => setUsername(event.target.value)}
               />
-              <Form.Label htmlFor="firstname">Firstame</Form.Label>
+              <Form.Label htmlFor="firstname">Nombre</Form.Label>
               <Form.Control
                 type="text"
                 id="firstname"
@@ -115,7 +117,7 @@ function EditAdminModal({
                 onChange={(event) => setFirstname(event.target.value)}
               />
 
-              <Form.Label htmlFor="lastname">Lastname</Form.Label>
+              <Form.Label htmlFor="lastname">Apellido</Form.Label>
               <Form.Control
                 type="text"
                 id="lastname"
@@ -123,7 +125,7 @@ function EditAdminModal({
                 value={lastname}
                 onChange={(event) => setLastname(event.target.value)}
               />
-              <Form.Label htmlFor="password">Password</Form.Label>
+              <Form.Label htmlFor="password">Contraseña</Form.Label>
               <Form.Control
                 type="password"
                 id="password"

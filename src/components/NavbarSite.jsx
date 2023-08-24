@@ -34,6 +34,11 @@ function NavbarSite() {
 
   return (
     <div className="navbar-container">
+      {admin && (
+        <p className="navbar-loggedas">
+          Bienvenido: {admin.firstname} {admin.lastname}
+        </p>
+      )}
       <Navbar expand="xxl" className="navbar-orejanos navbar-dark ">
         <Container fluid>
           <Navbar.Brand>

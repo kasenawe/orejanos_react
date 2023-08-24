@@ -4,6 +4,12 @@
   margin-top: 2%;
 }
 
+@media (max-width: 471px) {
+  .admins-container {
+    width: 100%;
+  }
+}
+
 .admins-text {
   color: var(--color-white);
 }
@@ -15,6 +21,19 @@
 
 .admins-plus-icon {
   position: relative;
+  cursor: pointer;
   left: 95%;
   bottom: 10px;
+}
+@media (max-width: 471px) {
+  .admins-plus-icon {
+    left: 85%;
+  }
+}
+
+.admins-delete-icon {
+  cursor: pointer;
+}
+.admins-edit-icon {
+  cursor: pointer;
 }

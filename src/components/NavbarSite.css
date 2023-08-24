@@ -50,3 +50,9 @@
   color: var(--color-white);
   font-family: Latin Becker;
 }
+
+.navbar-loggedas {
+  color: var(--color-red-alert);
+  position: absolute;
+  z-index: 9999;
+}

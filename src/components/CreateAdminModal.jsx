@@ -75,20 +75,22 @@ function CreateAdminModal({ show, setShow, render, setRender }) {
             </div>
           </div>
           <div className="create-modal-content">
-            <h3 className="create-modal-text text-center">Create admin</h3>
+            <h3 className="create-modal-text text-center">
+              Crear administrador
+            </h3>
             {errorMessage && (
               <p className="create-modal-error-message">{errorMessage}</p>
             )}
             {isLoading && <Loader />}
             <Form onSubmit={createAdmin}>
-              <Form.Label htmlFor="username">Username</Form.Label>
+              <Form.Label htmlFor="username">Usuario</Form.Label>
               <Form.Control
                 type="text"
                 id="username"
                 placeholder="username"
                 onChange={(event) => setUsername(event.target.value)}
               />
-              <Form.Label htmlFor="firstname">Firstame</Form.Label>
+              <Form.Label htmlFor="firstname">Nombre</Form.Label>
               <Form.Control
                 type="text"
                 id="firstname"
@@ -96,14 +98,14 @@ function CreateAdminModal({ show, setShow, render, setRender }) {
                 onChange={(event) => setFirstname(event.target.value)}
               />
 
-              <Form.Label htmlFor="lastname">Lastname</Form.Label>
+              <Form.Label htmlFor="lastname">Apellido</Form.Label>
               <Form.Control
                 type="text"
                 id="lastname"
                 placeholder="Lastname"
                 onChange={(event) => setLastname(event.target.value)}
               />
-              <Form.Label htmlFor="password">Password</Form.Label>
+              <Form.Label htmlFor="password">Contraseña</Form.Label>
               <Form.Control
                 type="password"
                 id="password"

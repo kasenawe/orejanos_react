@@ -8,6 +8,7 @@ import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeToken } from "../redux/adminSlice";
+import { Dropdown } from "react-bootstrap";
 
 import "./NavbarSite.css";
 
@@ -122,13 +123,30 @@ function NavbarSite() {
                     <ButtonNav buttonText="LOGIN" onCanvas="onCanvas" />
                   </Link>
                 ) : (
-                  <Link to="/" className="nav-link" onClick={handleLogout}>
-                    <ButtonNav
-                      buttonText="LOGOUT"
-                      onCanvas="onCanvas"
-                      onLogout="button-nav-logout-color"
-                    />
-                  </Link>
+                  <Dropdown className="d-flex">
+                    <Dropdown.Toggle className="navbar-drop-btn">
+                      <ButtonNav
+                        buttonText="ADMIN"
+                        onCanvas="onCanvas"
+                        onLogout="button-nav-logout-color"
+                      />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu className="navbar-drop-menu">
+                      <Link to="/admins" className="nav-link navbar-drop-item">
+                        Administradores
+                      </Link>
+                      <Link to="/" className="nav-link navbar-drop-item">
+                        Editar publicaciones
+                      </Link>
+                      <Link
+                        to="/"
+                        className="nav-link navbar-drop-item"
+                        onClick={handleLogout}
+                      >
+                        Cerrar sesión
+                      </Link>
+                    </Dropdown.Menu>
+                  </Dropdown>
                 )}
               </Nav>
             </Offcanvas.Body>

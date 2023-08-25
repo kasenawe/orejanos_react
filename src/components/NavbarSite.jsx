@@ -30,7 +30,18 @@ function NavbarSite() {
   const handleLogout = () => {
     dispatch(removeToken());
     handleCloseOffcanvas();
+    handleDropdownItemClick();
     navigate("/");
+  };
+
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const handleDropdownToggle = () => {
+    setShowDropdown(!showDropdown);
+  };
+
+  const handleDropdownItemClick = () => {
+    setShowDropdown(false); // Contraer el menú al hacer clic en un elemento
   };
 
   return (
@@ -122,8 +133,12 @@ function NavbarSite() {
                   >
                     <ButtonNav buttonText="LOGIN" onCanvas="onCanvas" />
                   </Link>
-                ) : (
-                  <Dropdown className="d-flex">
+                ) : showOffcanvas === false ? (
+                  <Dropdown
+                    className="d-flex"
+                    show={showDropdown}
+                    onToggle={handleDropdownToggle}
+                  >
                     <Dropdown.Toggle className="navbar-drop-btn">
                       <ButtonNav
                         buttonText="ADMIN"
@@ -132,14 +147,22 @@ function NavbarSite() {
                       />
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="navbar-drop-menu">
-                      <Link to="/admins" className="nav-link navbar-drop-item">
+                      <Link
+                        to="/admins"
+                        className="nav-link navbar-drop-item"
+                        onClick={handleDropdownItemClick}
+                      >
                         Administradores
-                      </Link>
-                      <Link to="/" className="nav-link navbar-drop-item">
-                        Editar publicaciones
                       </Link>
                       <Link
                         to="/"
+                        className="nav-link navbar-drop-item"
+                        onClick={handleDropdownItemClick}
+                      >
+                        Editar publicaciones
+                      </Link>
+                      <Link
+                        to="/admins"
                         className="nav-link navbar-drop-item"
                         onClick={handleLogout}
                       >
@@ -147,6 +170,42 @@ function NavbarSite() {
                       </Link>
                     </Dropdown.Menu>
                   </Dropdown>
+                ) : (
+                  <>
+                    <Link
+                      to="/admins"
+                      className="nav-link"
+                      onClick={handleCloseOffcanvas}
+                    >
+                      <ButtonNav
+                        buttonText="ADMINISTRADORES"
+                        onCanvas="onCanvas"
+                        onLogout="button-nav-logout-color"
+                      />
+                    </Link>
+                    <Link
+                      to="/"
+                      className="nav-link"
+                      onClick={handleCloseOffcanvas}
+                    >
+                      <ButtonNav
+                        buttonText="EDITAR PUBLICACIONES"
+                        onCanvas="onCanvas"
+                        onLogout="button-nav-logout-color"
+                      />
+                    </Link>
+                    <Link
+                      to="/login"
+                      className="nav-link"
+                      onClick={handleLogout}
+                    >
+                      <ButtonNav
+                        buttonText="CERRAR SESION"
+                        onCanvas="onCanvas"
+                        onLogout="button-nav-logout-color"
+                      />
+                    </Link>
+                  </>
                 )}
               </Nav>
             </Offcanvas.Body>

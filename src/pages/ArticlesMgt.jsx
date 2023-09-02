@@ -5,7 +5,7 @@ import axios from "axios";
 
 import Loader from "../components/Loader";
 import CreateArticleModal from "../components/CreateArticleModal";
-import DeleteAdminModal from "../components/DeleteAdminModal";
+import DeleteArticleModal from "../components/DeleteArticleModal";
 import EditAdminModal from "../components/EditAdminModal";
 
 function ArticlesMgt() {
@@ -16,7 +16,7 @@ function ArticlesMgt() {
   const [show, setShow] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
-  const [adminIdToDelete, setAdminIdToDelete] = useState(false);
+  const [articleIdToDelete, setArticleIdToDelete] = useState(false);
   const [adminIdToEdit, setAdminIdToEdit] = useState(false);
   const [username, setUsername] = useState(null);
   const [firstname, setFirstname] = useState(null);
@@ -48,9 +48,9 @@ function ArticlesMgt() {
     setShow(true);
   };
 
-  const handleDeleteClick = (adminId) => {
+  const handleDeleteClick = (artId) => {
     setShowDelete(true);
-    setAdminIdToDelete(adminId);
+    setArticleIdToDelete(artId);
   };
 
   const handleEditClick = (adminId) => {
@@ -120,7 +120,6 @@ function ArticlesMgt() {
                       src="/img/pencil-fill.svg"
                       alt="edit icon"
                       className="me-4 articles-mgt-edit-icon"
-                      onClick={() => handleEditClick(art.id)}
                     />
                     <img
                       src="/img/trash3-fill.svg"
@@ -140,10 +139,10 @@ function ArticlesMgt() {
         render={render}
         setRender={setRender}
       />
-      <DeleteAdminModal
+      <DeleteArticleModal
         showDelete={showDelete}
         setShowDelete={setShowDelete}
-        adminIdToDelete={adminIdToDelete}
+        articleIdToDelete={articleIdToDelete}
         render={render}
         setRender={setRender}
       />

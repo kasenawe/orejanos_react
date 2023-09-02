@@ -9,6 +9,7 @@ import Album from "../pages/Album";
 import Articles from "../pages/Articles";
 import Login from "../pages/Login";
 import Admins from "../pages/Admins";
+import ArticlesMgt from "../pages/ArticlesMgt";
 import ProtectedRoute from "./ProtectedRoute";
 import NotFound from "../pages/NotFound";
 
@@ -25,6 +26,7 @@ function Router() {
       <Route path="/login" element={<Login />} />
       <Route element={<ProtectedRoute />}>
         <Route path="/admins" element={<Admins />} />
+        <Route path="/admins/publicaciones" element={<ArticlesMgt />} />
       </Route>
       {/* Ruta de captura para manejar rutas desconocidas */}
       <Route path="*" element={<NotFound />} />

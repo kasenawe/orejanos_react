@@ -28,17 +28,21 @@ function Articles() {
     getArticles();
   }, []);
 
+  const reversedArticles = [...articles].reverse();
+
   return (
     <div className="articles-container">
       {isLoading && <Loader />}
       <h1 className="text-center mt-5 mb-5 articles-text">Publicaciones</h1>
       <div className="row">
-        {articles &&
-          articles.map((article) => (
+        {reversedArticles &&
+          reversedArticles.map((article) => (
             <Article
               key={article.id}
               name={article.name}
-              image={`/img/${article.image}`}
+              image={`${import.meta.env.VITE_SUPABASE_IMG_URL}/articles/${
+                article.image
+              }`}
               content={article.content}
             />
           ))}

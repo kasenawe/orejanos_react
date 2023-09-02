@@ -34,7 +34,7 @@ function Login() {
       } else {
         dispatch(setToken(response.data));
 
-        navigate("/");
+        navigate("/galeria");
       }
     } catch (error) {
       setError("Error en el servidor");

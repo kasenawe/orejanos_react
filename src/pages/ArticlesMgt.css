@@ -1,0 +1,44 @@
+.articles-mgt-image {
+  height: auto;
+  width: 200px;
+}
+
+.articles-mgt-container {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 2%;
+}
+
+@media (max-width: 471px) {
+  .articles-mgt-container {
+    width: 100%;
+  }
+}
+
+.articles-mgt-text {
+  color: var(--color-white);
+}
+
+.articles-mgt-header {
+  text-align: center;
+  color: var(--color-green-separator);
+}
+
+.articles-mgt-plus-icon {
+  position: relative;
+  cursor: pointer;
+  left: 95%;
+  bottom: 10px;
+}
+@media (max-width: 471px) {
+  .articles-mgt-plus-icon {
+    left: 85%;
+  }
+}
+
+.articles-mgt-delete-icon {
+  cursor: pointer;
+}
+.articles-mgt-edit-icon {
+  cursor: pointer;
+}

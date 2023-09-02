@@ -139,12 +139,11 @@ function NavbarSite() {
                     show={showDropdown}
                     onToggle={handleDropdownToggle}
                   >
-                    <Dropdown.Toggle className="navbar-drop-btn">
-                      <ButtonNav
-                        buttonText="ADMIN"
-                        onCanvas="onCanvas"
-                        onLogout="button-nav-logout-color"
-                      />
+                    <Dropdown.Toggle
+                      variant="danger"
+                      className="navbar-drop-btn"
+                    >
+                      ADMIN
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="navbar-drop-menu">
                       <Link
@@ -155,7 +154,7 @@ function NavbarSite() {
                         Administradores
                       </Link>
                       <Link
-                        to="/"
+                        to="/admins/publicaciones"
                         className="nav-link navbar-drop-item"
                         onClick={handleDropdownItemClick}
                       >
@@ -184,7 +183,7 @@ function NavbarSite() {
                       />
                     </Link>
                     <Link
-                      to="/"
+                      to="/admins/publicaciones"
                       className="nav-link"
                       onClick={handleCloseOffcanvas}
                     >

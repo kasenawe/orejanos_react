@@ -19,13 +19,15 @@ function HomeArticles() {
     getArticles();
   }, []);
 
+  const reversedArticles = [...articles].reverse();
+
   return (
     <div>
       <div className="row">
         <h3 className="mb-4 home-articles-title">Ultimas publicaciones:</h3>
 
-        {articles &&
-          articles
+        {reversedArticles &&
+          reversedArticles
             .slice(0, 3)
             .map((article) => (
               <Article

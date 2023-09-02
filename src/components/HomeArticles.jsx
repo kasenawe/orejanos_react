@@ -33,7 +33,9 @@ function HomeArticles() {
               <Article
                 key={article.id}
                 name={article.name}
-                image={`/img/${article.image}`}
+                image={`${import.meta.env.VITE_SUPABASE_IMG_URL}/articles/${
+                  article.image
+                }`}
                 content={article.content}
               />
             ))}

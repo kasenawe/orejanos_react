@@ -53,7 +53,7 @@ function Header() {
 
                 backgroundRepeat: "no-repeat",
                 backgroundAttachment: "static",
-                backgroundSize: "contain",
+                backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
             ></div>

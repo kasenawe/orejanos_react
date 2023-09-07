@@ -9,18 +9,21 @@ function Coordinators() {
         <div className="row">
           <CoordinatorsCard
             cardName={"Nicolas Gutierrez"}
-            cardJob={"Titular"}
+            cardJob={"Todoterreno"}
           />
-          <CoordinatorsCard cardName={"Christian Garcia"} cardJob={"Titular"} />
+          <CoordinatorsCard
+            cardName={"Christian Garcia"}
+            cardJob={"Escalador"}
+          />
           <CoordinatorsCard
             cardName={"Maximiliano Quintana"}
-            cardJob={"Suplente"}
+            cardJob={"Sprinter"}
             imgRoute={"/img/Maximiliano.png"}
             imgAlt={"Maximiliano"}
           />
           <CoordinatorsCard
             cardName={"Santiago Da Silva"}
-            cardJob={"Suplente"}
+            cardJob={"Chuparueda"}
             imgRoute={"/img/Santiago.jpg"}
             imgAlt={"Santiago"}
           />

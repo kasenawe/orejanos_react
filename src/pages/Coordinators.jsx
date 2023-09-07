@@ -9,10 +9,12 @@ function Coordinators() {
         <div className="row">
           <CoordinatorsCard
             cardName={"Nicolas Gutierrez"}
+            imgRoute={"/img/nicolas.jpeg"}
             cardJob={"Todoterreno"}
           />
           <CoordinatorsCard
             cardName={"Christian Garcia"}
+            imgRoute={"/img/cristian.webp"}
             cardJob={"Escalador"}
           />
           <CoordinatorsCard

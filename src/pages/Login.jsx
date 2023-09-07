@@ -73,9 +73,6 @@ function Login() {
               placeholder="password"
               onChange={(event) => setPasswordValue(event.target.value)}
             />
-            <Link to="" className="forgot login-text">
-              Olvido su contraseña?
-            </Link>
           </div>
           <div className="login-btn-container mt-5">
             <button className="login-btn" type="submit">

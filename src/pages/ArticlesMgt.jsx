@@ -6,7 +6,7 @@ import axios from "axios";
 import Loader from "../components/Loader";
 import CreateArticleModal from "../components/CreateArticleModal";
 import DeleteArticleModal from "../components/DeleteArticleModal";
-import EditAdminModal from "../components/EditAdminModal";
+import EditArticleModal from "../components/EditArticleModal";
 
 function ArticlesMgt() {
   const admin = useSelector((state) => state.admin);
@@ -17,10 +17,10 @@ function ArticlesMgt() {
   const [showDelete, setShowDelete] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [articleIdToDelete, setArticleIdToDelete] = useState(false);
-  const [adminIdToEdit, setAdminIdToEdit] = useState(false);
-  const [username, setUsername] = useState(null);
-  const [firstname, setFirstname] = useState(null);
-  const [lastname, setLastname] = useState(null);
+  const [articleIdToEdit, setArticleIdToEdit] = useState(false);
+  const [name, setName] = useState(null);
+  const [image, setImage] = useState([]);
+  const [content, setContent] = useState(null);
 
   useEffect(() => {
     const getArticles = async () => {
@@ -53,14 +53,14 @@ function ArticlesMgt() {
     setArticleIdToDelete(artId);
   };
 
-  const handleEditClick = (adminId) => {
+  const handleEditClick = (artId) => {
     setShowEdit(true);
-    const adminToEdit = admins.find((obj) => obj.id === adminId);
-    if (adminToEdit) {
-      setAdminIdToEdit(adminId);
-      setUsername(adminToEdit.username);
-      setFirstname(adminToEdit.firstname);
-      setLastname(adminToEdit.lastname);
+    const articleToEdit = articles.find((obj) => obj.id === artId);
+    if (articleToEdit) {
+      setArticleIdToEdit(artId);
+      setName(articleToEdit.name);
+      setImage(articleToEdit.image);
+      setContent(articleToEdit.content);
     }
   };
 
@@ -119,6 +119,7 @@ function ArticlesMgt() {
                     <img
                       src="/img/pencil-fill.svg"
                       alt="edit icon"
+                      onClick={() => handleEditClick(art.id)}
                       className="me-4 articles-mgt-edit-icon"
                     />
                     <img
@@ -146,18 +147,18 @@ function ArticlesMgt() {
         render={render}
         setRender={setRender}
       />
-      <EditAdminModal
+      <EditArticleModal
         showEdit={showEdit}
         setShowEdit={setShowEdit}
         render={render}
         setRender={setRender}
-        username={username}
-        setUsername={setUsername}
-        firstname={firstname}
-        setFirstname={setFirstname}
-        lastname={lastname}
-        setLastname={setLastname}
-        adminIdToEdit={adminIdToEdit}
+        name={name}
+        setName={setName}
+        image={image}
+        setImage={setImage}
+        content={content}
+        setContent={setContent}
+        articleIdToEdit={articleIdToEdit}
       />
     </>
   );

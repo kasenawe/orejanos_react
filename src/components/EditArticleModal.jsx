@@ -8,23 +8,32 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import Loader from "./Loader";
 
-function CreateArticleModal({ show, setShow, render, setRender }) {
+function EditArticleModal({
+  showEdit,
+  setShowEdit,
+  render,
+  setRender,
+  name,
+  setName,
+  image,
+  setImage,
+  content,
+  setContent,
+  articleIdToEdit,
+}) {
   const admin = useSelector((state) => state.admin);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [imageValue, setImage] = useState([]);
-  const [nameValue, setName] = useState("");
-  const [contentValue, setContent] = useState("");
 
   const handleClose = () => {
-    setShow(false);
+    setShowEdit(false);
   };
 
-  const createArticle = async (event) => {
+  const editArticle = async (event) => {
     event.preventDefault();
 
-    if (nameValue.trim() === "") {
-      alert("Por favor, ingresa un nombre para la publicación.");
+    if (name.trim() === "") {
+      alert("Por favor, ingresa un nombre para la publicacion.");
       return;
     }
 
@@ -33,16 +42,19 @@ function CreateArticleModal({ show, setShow, render, setRender }) {
 
       const formData = new FormData();
 
-      formData.append("name", nameValue);
-      formData.append("image", imageValue);
-      formData.append("content", contentValue);
+      formData.append("name", name);
+      formData.append("image", image);
+      formData.append("content", content);
+      console.log(image);
 
       await axios({
-        method: "POST",
-        url: `${import.meta.env.VITE_API_DOMAIN}/api/article`,
+        method: "PATCH",
+        url: `${
+          import.meta.env.VITE_API_DOMAIN
+        }/api/article/edit/${articleIdToEdit}`,
         data: formData,
+
         headers: {
-          "Content-Type": "multipart/form-data",
           Authorization: "Bearer " + admin.token,
         },
       });
@@ -50,9 +62,9 @@ function CreateArticleModal({ show, setShow, render, setRender }) {
 
       handleClose();
     } catch (error) {
-      console.error("Error al crear la publicación:", error);
+      console.error("Error al editar la publicacion:", error);
       setErrorMessage(
-        "Error al crear la publicación. Por favor, inténtalo nuevamente."
+        "Error al editar la publicacion. Por favor, inténtalo nuevamente."
       );
     } finally {
       setIsLoading(false);
@@ -64,7 +76,7 @@ function CreateArticleModal({ show, setShow, render, setRender }) {
     <>
       <Modal
         size="md"
-        show={show}
+        show={showEdit}
         onHide={handleClose}
         aria-labelledby="example-modal-sizes-title-lg"
         centered
@@ -76,35 +88,36 @@ function CreateArticleModal({ show, setShow, render, setRender }) {
             </div>
           </div>
           <div className="create-modal-content">
-            <h3 className="create-modal-text text-center">Crear publicacion</h3>
+            <h3 className="create-modal-text text-center">
+              Editar publicacion
+            </h3>
             {errorMessage && (
               <p className="create-modal-error-message">{errorMessage}</p>
             )}
             {isLoading && <Loader />}
-            <Form onSubmit={createArticle} encType="multipart/form-data">
+            <Form onSubmit={editArticle} encType="multipart/form-data">
               <Form.Label htmlFor="name">Nombre</Form.Label>
               <Form.Control
                 type="text"
                 id="name"
-                name="name"
-                placeholder="Nombre"
+                placeholder="name"
+                value={name}
                 onChange={(event) => setName(event.target.value)}
               />
               <Form.Label htmlFor="image">Imagen</Form.Label>
               <Form.Control
                 type="file"
                 id="image"
-                name="image"
-                placeholder="image"
                 onChange={(event) => setImage(event.target.files[0])}
               />
+
               <Form.Label htmlFor="content">Contenido</Form.Label>
               <Form.Control
                 as="textarea"
-                row={5}
+                rows={5}
                 id="content"
-                name="content"
-                placeholder="Contenido"
+                placeholder="content"
+                value={content}
                 onChange={(event) => setContent(event.target.value)}
               />
 
@@ -123,7 +136,7 @@ function CreateArticleModal({ show, setShow, render, setRender }) {
                   variant="primary"
                   className="create-modal-btn"
                 >
-                  Crear
+                  Aplicar
                 </button>
               </div>
             </Form>
@@ -134,4 +147,4 @@ function CreateArticleModal({ show, setShow, render, setRender }) {
   );
 }
 
-export default CreateArticleModal;
+export default EditArticleModal;
